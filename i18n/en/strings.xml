@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="about_title">About</string>
+	<string name="how_it_works_title">How It Works</string>
+	<string name="faq_title">FAQ</string>
+	<string name="my_profile_title">My Profile</string>
+	<string name="promo_code_title">Promo Code</string>
+	<string name="login_title">Login</string>
+	<string name="locations_title">Locations</string>	
+	<string name="my_rewards_title">My Rewards</string>
+	<string name="wall_title">Wall</string>
+	<string name="info_title">Info</string>
+</resources>

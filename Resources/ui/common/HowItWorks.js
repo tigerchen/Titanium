@@ -1,0 +1,100 @@
+function HowItWorksWindow(title) {
+	
+	var wSelf = require('ui/common/Window');
+	var self = new wSelf(title, 'back');
+		
+	var height = Ti.App.Device._height;
+	var width = Ti.App.Device._width;
+
+
+//Body
+var vBody = Titanium.UI.createView({
+	top:'10%',
+	left:'0%',
+	height:'90%',
+	width:'100%',
+	backgroundColor:'white'
+});
+
+var iHow = Titanium.UI.createImageView({
+	center: {x:'50%', y:'45%'},
+	height:'70%',
+	width:'80%',
+	image:'/images/how_to.png'
+});
+vBody.add(iHow);
+
+var lHelp = Titanium.UI.createLabel({
+			center:{x:'33%',y:'88%'},
+			font:{fontSize:width / 22, fontFamily: 'Helvetica'},
+			text:'Need more help?',
+			color:'red'	
+});
+vBody.add(lHelp);
+
+var lFaq = Titanium.UI.createLabel({
+			center:{x:'66%',y:'88%'},
+			font:{fontSize:width / 22, fontFamily: 'Helvetica'},
+			text:'See our FAQ.',
+			color:'red'	
+});
+vBody.add(lFaq);
+
+//bSignup.addEventListener('click',function(e){
+//	
+//	var hostURL = "http://10.0.2.2:3000/api/v1/user/signup?";
+//	
+//	// var deviceUUID = Ti.Platform.macaddress; // Ti.Network.remoteDeviceUUID;
+//	// var deviceName = Ti.Platform.username;
+//	// var deviceModel = Ti.Platform.model;
+//	// var deviceSystemVersion = Ti.Platform.version;
+//	// var deviceToken = e.deviceToken;
+//	
+//	var host = hostURL;
+//	var urlString = host;
+//	/*urlString += "&appname=" + appName;
+//	urlString += "&appversion=" + appVersion;
+//	urlString += "&deviceuid=" + deviceUUID;
+//	urlString += "&devicetoken=" + deviceToken;
+//	urlString += "&devicename=" + deviceName;
+//	urlString += "&devicemodel=" + deviceModel;
+//	urlString += "&deviceversion=" + deviceSystemVersion;*/
+//	
+//	var latitude = '-6.923956';
+//	var longitude = '107.55317';
+//	var register_type = 'Email PWD';
+//	var osname = Ti.Platform.osname;
+//	var device_id = Titanium.Platform.id;			
+//				
+//	urlString += "email=" + tEmail.value;
+//	urlString += "&password=" + tPassword.value;
+//	urlString += "&latitude=" + latitude;
+//	urlString += "&longitude=" + longitude;
+//	urlString += "&register_type =" + register_type;
+//	urlString += "&register_device_type =" + osname;
+//	urlString += "&device_id =" + device_id;	
+//								
+//	var loader = Ti.Network.createHTTPClient();
+//	loader.setTimeout(60000);
+//				
+//	loader.onload = function(evt)
+//	{
+//		//alert(evt);
+//					
+//		//create json object using the Json.parse function
+//		var jsonObject = JSON.parse(this.responseText);
+//		alert(jsonObject.notice);
+//	}
+//				
+//	loader.open('POST', urlString, false);
+//	loader.send();
+//	
+//});
+
+self.add(vBody);
+
+
+return self;
+};
+
+module.exports = HowItWorksWindow;
