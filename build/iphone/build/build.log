@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 12/14/12 03:23
+Starting build at 12/29/12 02:20
 
 Build details:
 
@@ -24,7 +24,6 @@ Script arguments:
    AROMA ESPRESSO BAR
    universal
    iphone
-   
 
 Building from: /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/iphone
 Platform: Darwin Kernel Version 12.2.0: Sat Aug 25 00:48:52 PDT 2012; root:xnu-2050.18.24~1/RELEASE_X86_64

@@ -19,13 +19,48 @@ if (Ti.version < 1.8 ) {
 (function() {
 	//determine platform and form factor and render approproate components
 	
-		
 	Ti.App.Device = {
 		_osname:Ti.Platform.osname,
 		_version:Ti.Platform.version,
 		_height:Ti.Platform.displayCaps.platformHeight,
 		_width:Ti.Platform.displayCaps.platformWidth
 	};
+	
+	Ti.App.DeviceToken = {
+		_device_token:''
+	};	
+	
+	Ti.App.Index = {
+		_index:0
+	};
+	
+	Ti.App.User = {
+		_loginStatus:'false',
+		_auth_token:'',
+		_survey_id:'',
+		_receipt_id:''
+	};
+	
+	if(Ti.App.Device._osname == 'android'){
+		Ti.App.Key = {
+		_Appkey: 'wp51dSKy4USzP5TQ'
+		};
+	}else{
+		Ti.App.Key = {
+		_Appkey: 'bTBTpVudV2AzZkLT'
+		};	
+	};
+	
+	
+	// Ti.App.Location = {
+		// _latitude: '-6.9243597',
+		// _longitude:'107.551548'
+	// };
+		
+	Ti.App.Location = {
+		_latitude: '',
+		_longitude:''
+	};		
 	
 	//considering tablet to have one dimension over 900px - this is imperfect, so you should feel free to decide
 	//yourself what you consider a tablet form factor for android
@@ -41,11 +76,15 @@ if (Ti.version < 1.8 ) {
 	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 	var theTabGroup = new ApplicationTabGroup();
 	if (Ti.App.Device._osname === 'iphone' || Ti.App.Device._osname === 'ipad') {
-		theTabGroup.open({transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
+		theTabGroup.open(0, {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
+	}else{
+		theTabGroup.open(0);
 	}
-	else{
-		theTabGroup.open();
-	}
+	
+	theTabGroup.addEventListener('focus', function(e) {
+		var geolocation = require('ui/common/geolocation');
+  		var geo = new geolocation();
+	});
 	
 	
 })();

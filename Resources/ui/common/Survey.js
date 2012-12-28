@@ -1,4 +1,4 @@
-function SurveyWindow(title) {
+function SurveyWindow(title, survey_id) {
 	
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, '');
@@ -6,7 +6,8 @@ function SurveyWindow(title) {
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
 
-
+	// alert('survey id = ' + Ti.App.User._survey_id);
+	
 //Body
 var vBody = Titanium.UI.createView({
 	width: '95%',

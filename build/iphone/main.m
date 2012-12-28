@@ -7,14 +7,14 @@
 #define _QUOTEME(x) #x
 #define STRING(x) _QUOTEME(x)
 
-NSString * const TI_APPLICATION_DEPLOYTYPE = @"development";
+NSString * const TI_APPLICATION_DEPLOYTYPE = @"test";
 NSString * const TI_APPLICATION_ID = @"com.pushjaw.aroma";
-NSString * const TI_APPLICATION_PUBLISHER = @"pushjaw";
-NSString * const TI_APPLICATION_URL = @"http://www.pushjaw.com";
+NSString * const TI_APPLICATION_PUBLISHER = @"trelevant";
+NSString * const TI_APPLICATION_URL = @"http://trelevant.herokuapp.com";
 NSString * const TI_APPLICATION_NAME = @"AROMA ESPRESSO BAR";
 NSString * const TI_APPLICATION_VERSION = @"1.0";
 NSString * const TI_APPLICATION_DESCRIPTION = @"not specified";
-NSString * const TI_APPLICATION_COPYRIGHT = @"2012 by pushjaw";
+NSString * const TI_APPLICATION_COPYRIGHT = @"2012 by trelevant";
 NSString * const TI_APPLICATION_GUID = @"67758544-8202-4f0f-a75c-5cb5f99051b5";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 

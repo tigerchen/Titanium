@@ -1,12 +1,16 @@
 function Window(title, button) {
 
+	var osname = Ti.App.Device._osname;
+
 	//window
 	 var self = Ti.UI.createWindow({
 	 title:title,
 	 backgroundColor:'black',
-	 navBarHidden:true
+	 navBarHidden:true,
+	 exitOnClose:false
+	 // modal:true
 	 });
-	
+		
 	//Header
 	var vHeader = Titanium.UI.createView({
 		top:'-0.5%',
@@ -16,11 +20,12 @@ function Window(title, button) {
 		backgroundImage:'/images/topbar.png'
 	});
 	self.add(vHeader);	
+
 	
-	self.addEventListener('focus', function()
-	{
-		// alert(title);
-	});
+	self.addEventListener('android:back', function(e) {
+		self.close();	
+	});	
+	
 	
 	if(button == 'back'){		
 		
@@ -30,13 +35,18 @@ function Window(title, button) {
 		height:'80%',
 		width:'20%'	
 		});	
-
-			bBack.addEventListener("click", function(e) {  		
-    		    		
-    		var win = Ti.App.Device._window;
-			win.close({animated:true});
 			
-			});			
+			
+			bBack.addEventListener("click", function(e) { 
+    			self.fireEvent('android:back');
+			});
+	
+			// bBack.addEventListener("click", function(e) {  		
+//     		    		
+    		// var win = Ti.App.Device._window;
+			// win.close({animated:true});
+// 			
+			// });			
 						
 
 		vHeader.add(bBack);		
@@ -49,17 +59,36 @@ function Window(title, button) {
 		height:'80%',
 		width:'20%'	
 		});
-
-		bCancel.addEventListener("click", function() {
-    		var win = Ti.App.Device._window;
-			win.close({animated:true});
-		});
+		
+		
+			bCancel.addEventListener("click", function() {
+    			self.fireEvent('android:back');
+			});
+			
+		// bCancel.addEventListener("click", function() {
+    		// var win;
+//     		
+    		// if(title == 'Sign Up'){
+    			// win = Ti.App.Device._windowSignUp;   					
+    		// }else if(title == 'Login'){
+	    		// win = Ti.App.Device._windowLogin;
+    		// }else if(title == 'Retrieve Password'){
+	    		// win = Ti.App.Device._windowForgot;
+    		// }else{
+	    		// win = Ti.App.Device._window;    			
+    		// };
+//     		
+    		// win.close({animated:true});
+// 
+		// });
 		
 		vHeader.add(bCancel);
 	
 	};
 	
-		
+	
+	
+	
 		
 	return self;
 };

@@ -1,10 +1,14 @@
 function LoginWindow(title) {
 	
+	Ti.include('ui/common/globalVariabel.js');
+	// Ti.include('globalVariabel.js');
+	
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, 'cancel');
-		
-	var height = Ti.App.Device._height;
-	var width = Ti.App.Device._width;
+	
+	var osname = Ti.App.Device._osname,	
+		height = Ti.App.Device._height,
+		width = Ti.App.Device._width;
 
 
 //Body
@@ -53,12 +57,48 @@ var tPassword = Titanium.UI.createTextField({
 });	
 vBody.add(tPassword);
 
-var bSignup = Titanium.UI.createButton({
+var bLoggin = Titanium.UI.createButton({
 	backgroundImage:'/images/login.png',
 	center: {x:'50%', y:'49%'},
 	width:'85%',
 	height:'11%'
 });
+
+
+bLoggin.addEventListener('click',function(e){    
+    
+    if(tEmail.value != '' && tPassword.value != ''){
+    
+    	// message = "No Google account found; you will need to add on in order to activate notifications";
+		// Titanium.UI.createAlertDialog
+		// (
+			// {
+				// title:'Push Notification Setup',
+				// message:'message',
+				// buttonNames:['OK']
+			// }
+		// ).show();
+    	
+    	var data = [
+			{email:tEmail.value},
+			{password:tPassword.value}
+		];
+	
+    	var Http = require('ui/common/HTTPClient'),
+			http = new Http('Login', data);
+    	
+    }else{
+    	Titanium.UI.createAlertDialog
+		(
+			{
+				title:'Error',
+				message:'UserName and Password Field can not be empty',
+				buttonNames:['OK']
+			}
+	).show();	
+	};
+});
+
 
 var bConnect = Titanium.UI.createButton({
 	backgroundImage:'/images/fb_connect.png',
@@ -74,59 +114,21 @@ var lForgot = Titanium.UI.createLabel({
 	color:'red'
 });
 
+lForgot.addEventListener('click', function(e){
+	
+	var GetPasswordWindow = require('ui/common/GetPassword'),
+		GetPasswordWin = new GetPasswordWindow('Retrieve Password');
+		
+	GetPasswordWin.open({animated:true});
+	
+	Ti.App.Device = {
+		_windowForgot:GetPasswordWin
+	};
+	
+});
 
-//bSignup.addEventListener('click',function(e){
-//	
-//	var hostURL = "http://10.0.2.2:3000/api/v1/user/signup?";
-//	
-//	// var deviceUUID = Ti.Platform.macaddress; // Ti.Network.remoteDeviceUUID;
-//	// var deviceName = Ti.Platform.username;
-//	// var deviceModel = Ti.Platform.model;
-//	// var deviceSystemVersion = Ti.Platform.version;
-//	// var deviceToken = e.deviceToken;
-//	
-//	var host = hostURL;
-//	var urlString = host;
-//	/*urlString += "&appname=" + appName;
-//	urlString += "&appversion=" + appVersion;
-//	urlString += "&deviceuid=" + deviceUUID;
-//	urlString += "&devicetoken=" + deviceToken;
-//	urlString += "&devicename=" + deviceName;
-//	urlString += "&devicemodel=" + deviceModel;
-//	urlString += "&deviceversion=" + deviceSystemVersion;*/
-//	
-//	var latitude = '-6.923956';
-//	var longitude = '107.55317';
-//	var register_type = 'Email PWD';
-//	var osname = Ti.Platform.osname;
-//	var device_id = Titanium.Platform.id;			
-//				
-//	urlString += "email=" + tEmail.value;
-//	urlString += "&password=" + tPassword.value;
-//	urlString += "&latitude=" + latitude;
-//	urlString += "&longitude=" + longitude;
-//	urlString += "&register_type =" + register_type;
-//	urlString += "&register_device_type =" + osname;
-//	urlString += "&device_id =" + device_id;	
-//								
-//	var loader = Ti.Network.createHTTPClient();
-//	loader.setTimeout(60000);
-//				
-//	loader.onload = function(evt)
-//	{
-//		//alert(evt);
-//					
-//		//create json object using the Json.parse function
-//		var jsonObject = JSON.parse(this.responseText);
-//		alert(jsonObject.notice);
-//	}
-//				
-//	loader.open('POST', urlString, false);
-//	loader.send();
-//	
-//});
 
-vBody.add(bSignup);
+vBody.add(bLoggin);
 vBody.add(bConnect);
 vBody.add(lForgot);
 

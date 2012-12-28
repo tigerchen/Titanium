@@ -1,4 +1,4 @@
-function ProgressWindow(title) {
+function ProgressWindow(title, image, restaurant_id, name, address, phone, offer_id) {
 	
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, '');
@@ -6,14 +6,16 @@ function ProgressWindow(title) {
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
 
+		
 //Body
 var vBody = Titanium.UI.createView({
-	top:'12%',
+	top:'10%',
 	left:'0%',
-	height:'88%',
+	height:'80%',
 	width:'100%',
 	backgroundImage:'/images/submit_background.png'
 });
+
 
 var iProgress = Titanium.UI.createButton({
 	center:{x:'50%',y:'60%'},
@@ -23,134 +25,164 @@ var iProgress = Titanium.UI.createButton({
 });
 vBody.add(iProgress);
 
+
 var lStreet = Titanium.UI.createLabel({
-	center: {x:'30%', y:'6%'},
-	font: {fontSize:width / 12, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-	text: 'Green Street',
-	color:'white'	
-});
-vBody.add(lStreet);
+		left:'5%',
+		top:'3%',
+		font: {fontSize:width / 16, fontFamily: 'Helvetica'}	,
+		text: name,
+		color:'white'	
+	});
+	vBody.add(lStreet);
 
-var iMap = Titanium.UI.createImageView({
-	center:{x:'26%',y:'88%'},
-	image:'/images/map_button.png',
-	width: '42%',
-	height: '18%'
-});
-vBody.add(iMap);
+	var vMap = Titanium.UI.createView({
+		center:{x:'26%',y:'88%'},
+		backgroundImage:'/images/map_button.png',
+		width: '42%',
+		height: '18%'
+	});
+	vBody.add(vMap);
 
-var iPhone = Titanium.UI.createImageView({
-	center:{x:'74%',y:'88%'},
-	image:'/images/phone_button.png',
-	width: '42%',
-	height: '18%'
-});
-vBody.add(iPhone);
+	var vPhone = Titanium.UI.createView({
+		center:{x:'74%',y:'88%'},
+		backgroundImage:'/images/phone_button.png',
+		width: '42%',
+		height: '18%'
+	});
+	vBody.add(vPhone);
 
-var lAddress = Titanium.UI.createLabel({
-	center: {x:'21%', y:'83%'},
-	font: {fontSize:width / 24, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-	text: 'Address',
-	color:'red'	
-});
-vBody.add(lAddress);
+	var lAddress = Titanium.UI.createLabel({
+		left:'20%',
+		top:'5%',
+		font: {fontSize:width / 24, fontFamily: 'Helvetica'}	,
+		text: 'Address',
+		color:'red'	
+	});
+	vMap.add(lAddress);
 
-var lAdd = Titanium.UI.createLabel({
-	center: {x:'24%', y:'90%'},
-	font: {fontSize:width / 28, fontFamily: 'Helvetica'}	,
-	text: '145 Greene Street \nNew York, NY 10012',	
-	color:'black'
-});
-vBody.add(lAdd);
+	var lAdd = Titanium.UI.createLabel({
+		left:'5%',
+		top:'35%',
+		font: {fontSize:width / 22, fontFamily: 'Helvetica'}	,
+		text: address,	
+		color:'black'
+	});
+	vMap.add(lAdd);
 
-var lPhone = Titanium.UI.createLabel({
-	center: {x:'66%', y:'83%'},
-	font: {fontSize:width / 24, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-	text: 'Phone',
-	color:'red'	
-});
-vBody.add(lPhone);
+	var lPhone = Titanium.UI.createLabel({
+		left:'20%',
+		top:'5%',
+		font: {fontSize:width / 24, fontFamily: 'Helvetica'}	,
+		text: 'Phone',
+		color:'red'	
+	});
+	vPhone.add(lPhone);
 
-var lNo = Titanium.UI.createLabel({
-	center: {x:'71%', y:'88%'},
-	font: {fontSize:width / 28, fontFamily: 'Helvetica'}	,
-	text: '(212) 533-1094',	
-	color:'black'
-});
-vBody.add(lNo);
-
-// //declare the http client object
-// // var xhr = Titanium.Network.createHTTPClient();
-// 
-// var data = []; //empty data array
-// 
-// //create the table view
-// var tblRecipes = Titanium.UI.createTableView({
-	// height: '100%',
-	// width: '100%',
-	// center:{x:'50%', y:'50%'}
-// });
-// vBody.add(tblRecipes);
-// 
-// //this method will process the remote data
-// // xhr.onload = function() {
-// 
-	// //get the item nodelist from our response json object
-	// // var jsonObject = JSON.parse(this.responseText);
-// 	
-	// //loop each item in the xml
-	// // for (var i = 0; i < jsonObject.length; i++) {
-	// for (var i = 0; i < 5; i++) {
-// 	
-		// //create a table row
-		// var row = Titanium.UI.createTableViewRow({
-			// height:height / 6
-		// });
-// 
-		// //title label
-		// var titleLabel = Titanium.UI.createLabel({
-			// // text:jsonObject.notice,
-			// text:'test' + [i],
-			// font: {fontSize: height / 18, fontWeight: 'bold'},
-			// center:{x:'15%',y:'25%'},
-			// color:'black',
-			// textAlign:'left'
-		// });
-		// row.add(titleLabel);
-// 		
-		// //add our little icon to the left of the row
-		// var iconImage = Titanium.UI.createImageView({
-			// image: 'assets/arrow.png',
-			// height:height / 24,
-			// width:width/20,
-			// center:{x:'95%',y:'0%'}
-		// });
-		// row.add(iconImage);
-// 		
-		// //add our little icon to the left of the row
-		// var bEarn = Titanium.UI.createButton({
-			// backgroundImage:'assets/earn_points.png',
-			// height:height / 22,
-			// width:width/3.5,
-			// center:{x:'18%',y:'65%'}
-		// });
-		// row.add(bEarn);
-// 
-		// //add the table row to our data[] object
-		// data.push(row);
-// } //end for loop
-// 	
-// //set the data property of the tableView to data[] object
-// tblRecipes.data = data;
-// // };
-// 
-// //open up the recipes xml feed
-// // xhr.open('GET', 'http://www.test.com');
-// 
-// //finally, execute the call to the remote feed
-// // xhr.send();
-
+	var lNo = Titanium.UI.createLabel({
+		left:'5%',
+		top:'35%',
+		font: {fontSize:width / 22, fontFamily: 'Helvetica'}	,
+		text: phone,	
+		color:'black'
+	});
+	vPhone.add(lNo);
+	
 self.add(vBody);
+
+var progressBar = Titanium.UI.createProgressBar({
+	width:'53%',
+	height:'19%',
+	min:0,
+	max:1,
+	value:0,
+	style:Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
+	center:{x:'50%',y:'57%'},
+	// message:'Uploading Image',
+	// font:{fontSize:12, fontWeight:'bold'},
+	color:'blue'
+});
+self.add(progressBar);
+progressBar.show();
+	
+
+self.addEventListener('focus', function(){
+		// hostURL = "http://10.0.2.2:3000/api/v1/receipts?";
+		hostURL = "http://trelevant.herokuapp.com/api/v1/receipts?";
+											
+				var host = hostURL;
+				var urlString = host;
+				
+				urlString += "appkey=" + Ti.App.Key._Appkey;
+				urlString += "&restaurant=" + restaurant_id;
+				urlString += "&offer=" + offer_id;
+				urlString += "&auth_token=" + Ti.App.User._auth_token;	
+												
+				var loader = Ti.Network.createHTTPClient();
+					
+					
+				loader.onload = function(evt)
+				{
+					
+					//create json object using the Json.parse function
+					jsonObject = JSON.parse(this.responseText);
+					
+					
+					var alert = Titanium.UI.createAlertDialog({
+    					title: 'Information',
+    					message: jsonObject.notice,
+    					buttonNames: ['Ok']
+					});
+ 
+					alert.addEventListener('click', function(e) {
+    					Titanium.API.info('e = ' +  JSON.stringify(e));
+ 
+       				//Clicked cancel, first check is for iphone, second for android
+       				// if (e.cancel === e.index || e.cancel === true) {
+          				// return;
+       				// }
+ 
+        			//now you can use parameter e to switch/case
+ 
+       				switch (e.index) {
+          				case 0: 
+							Ti.App.User = {
+								_survey_id:jsonObject.survey_id
+							};
+							
+							var SurveyWindow = require('ui/common/Survey'),
+								SurveyWin = new SurveyWindow('Survey', Ti.App.User._survey_id);
+				
+								SurveyWin.open({animated:true});
+																
+							
+          				break;
+ 
+          				//This will never be reached, if you specified cancel for index 1
+          				// case 1: Titanium.API.info('Clicked button 1 (NO)');
+          				// break;
+ 
+          				default:
+          				break;
+ 
+      				}
+ 
+					});
+ 
+					alert.show(); 					
+									
+				};
+				
+				loader.onsendstream = function(e)
+				{
+					progressBar.value = e.progress ;
+					// Ti.API.info('ONSENDSTREAM - PROGRESS: ' + e.progress);
+				};
+				
+				loader.setTimeout(10000);
+				loader.open('POST', urlString);
+				loader.send({image:image});
+		
+});
 
 
 return self;

@@ -1,14 +1,14 @@
 function SignupWindow(title) {
 	
-	var wSelf = require('ui/common/Window');
-	var self = new wSelf(title, 'cancel');
+	var wSelf = require('ui/common/Window'),
+	self = new wSelf(title, 'cancel');
 		
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
 
-	Ti.App.Device = {
-			_window:self
-	};
+	// Ti.App.Device = {
+			// _window:self
+	// };
 	
 //Body
 var vBody = Titanium.UI.createView({
@@ -52,7 +52,8 @@ var tPassword = Titanium.UI.createTextField({
 	height:'10%',
 	hintText:'Password',
 	passwordMask: true,
-	paddingLeft: 10
+	paddingLeft: 10,
+	minimumFontSize: 6	
 });	
 vBody.add(tPassword);
 
@@ -84,6 +85,20 @@ var lLogin = Titanium.UI.createLabel({
 	color:'red'
 });
 
+lLogin.addEventListener('click', function(e){
+	
+	var LoginWindow = require('ui/common/Login'),
+		loginWin = new LoginWindow(L('login_title'));
+		// win = loginWin;
+		
+	loginWin.open({animated:true});
+	
+	// Ti.App.Device = {
+		// _windowLogin:win
+	// };
+	
+});
+
 var lTerm = Titanium.UI.createLabel({
 	center: {x:'50%', y:'90%'},
 	font: {fontSize:width / 22, fontFamily: 'Helvetica', fontWeight: 'underline'}	,
@@ -94,96 +109,38 @@ var lTerm = Titanium.UI.createLabel({
 
 bSignup.addEventListener('click',function(e){    
     
-	var hostURL = "http://10.0.2.2:3000/api/v1/user/signup?";
+    if(tEmail.value != '' && tPassword.value != ''){
+    
+    	// message = "No Google account found; you will need to add on in order to activate notifications";
+		// Titanium.UI.createAlertDialog
+		// (
+			// {
+				// title:'Push Notification Setup',
+				// message:'message',
+				// buttonNames:['OK']
+			// }
+		// ).show();
+    
+    
+    	var data = [
+			{email:tEmail.value},
+			{password:tPassword.value}
+		];
 	
-	// var hostURL = "http://trelevant.herokuapp.com/api/v1/user/signup?";
-	
-	var gcm = require('com.pushjaw.googlecloudmessaging');
-	Ti.API.info('module gcm is => ' + gcm);
-	
-	Ti.API.info('Registering...');
-	
-	gcm.registerC2dm
-	( 
-		{
-			success:function(e)
+    	var Http = require('ui/common/HTTPClient'),
+			http = new Http('Signup', data);
+    	
+    }else{
+    	Titanium.UI.createAlertDialog
+		(
 			{
-				Ti.API.info('JS registration success event: ' + e.registrationId);
-								
-				var appName = Ti.App.name;
-				var appVersion = Ti.App.version;
-								
-				var regId = e.registrationId;
-			 								
-				var host = hostURL;
-				var urlString = host;
-	
-				var latitude = '-6.923956';
-				var longitude = '107.55317';
-				var register_type = '1';
-				var Appkey = 'wp51dSKy4USzP5TQ';
-				var osname = Ti.Platform.osname;
-				var device_id = Titanium.Platform.id;			
-				
-				urlString += "appkey=" + Appkey;
-				urlString += "&first_name=" + 'Kurt';
-				urlString += "&last_name=" + 'Cobain';
-				urlString += "&username=" + 'kurt';
-				urlString += "&email=" + tEmail.value;
-				urlString += "&register_type=" + register_type;
-				urlString += "&password=" + tPassword.value;
-				urlString += "&register_device_type=" + osname;
-				urlString += "&deviceid=" + device_id;
-				urlString += "&latitude=" + latitude;	
-				urlString += "&longitude=" + longitude;
-				urlString += "&device_token=" + regId;
-												
-	
-								
-				var loader = Ti.Network.createHTTPClient();
-					
-				loader.onload = function(evt)
-				{
-					
-					//create json object using the Json.parse function
-					var jsonObject = JSON.parse(this.responseText);
-					alert(jsonObject.notice);
-				}
-				
-				// loader.open('POST', urlString, false);
-				loader.open('POST', urlString);
-				loader.setRequestHeader('Content-Type', 'form-data');
-				loader.send();
-				
-				// alert(urlString);
-			},
-			error:function(e)
-			{
-				Ti.API.error("Error during registration : " + e.error);
-				alert("Error during registration : " + e.error);
-				
-				var message;
-				if(e.error == "ACCOUNT_MISSING")
-				{
-					message = "No Google account found; you will need to add on in order to activate notifications";
-				}
-
-				Titanium.UI.createAlertDialog
-				(
-					{
-						title:'Push Notification Setup',
-						message:message,
-						buttonNames:['OK']
-					}
-				).show();
-			},
-			callback:function(e) // called when a push notification is received
-			{
-				Ti.API.info('JS message event: ' + JSON.stringify(e.data));
-				
+				title:'Error',
+				message:'UserName and Password Field can not be empty',
+				buttonNames:['OK']
 			}
-		 }
-	);	
+	).show();	
+    };
+	
 });
 
 vBody.add(bSignup);

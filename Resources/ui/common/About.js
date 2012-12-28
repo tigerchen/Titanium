@@ -5,7 +5,7 @@ function AboutWindow(title) {
 		
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
-
+	
 //Body
 var vBody = Titanium.UI.createView({
 	top:'10%',

@@ -8,7 +8,8 @@ function LocationsWindow(title) {
 		
 	var _height = Ti.App.Device._height;
 	var _width = Ti.App.Device._width;
-
+	// var status = Ti.App.User._loginStatus;
+		
 	var vTop = Titanium.UI.createView({
 		top:'10%',
 		left:0,
@@ -26,12 +27,32 @@ function LocationsWindow(title) {
 		backgroundColor:'white'
 	});
 
-
+	
+	// alert('Latitude = ' + Ti.App.Location._latitude);
+	
+	// var hostURL = "http://10.0.2.2:3000/api/v1/offers/nearby?";
+	var hostURL = "http://trelevant.herokuapp.com/api/v1/offers/nearby?";
+	
+	var host = hostURL;
+	var urlString = host;
+				
+	urlString += "appkey=" + Ti.App.Key._Appkey;
+	urlString += "&lat=" + Ti.App.Location._latitude;
+	urlString += "&lng=" + Ti.App.Location._longitude;
+	urlString += "&distance=" + 0;
+	
 	//declare the http client object
-	// var xhr = Titanium.Network.createHTTPClient();
-
+	var loader = Ti.Network.createHTTPClient();
+	
 	var data = []; //empty data array
-
+	var restaurant = [],
+		id = [],
+		name = [],
+		address = [],
+		phone_number = [],
+		offer = 1;
+		// offer2 = [];
+		
 	//create the table view
 	var tblRecipes = Titanium.UI.createTableView({
 		height: '100%',
@@ -41,28 +62,56 @@ function LocationsWindow(title) {
 	vBody.add(tblRecipes);
 
 	//this method will process the remote data
-	// xhr.onload = function() {
+	loader.onload = function() {
 
-		//get the item nodelist from our response json object
-		// var jsonObject = JSON.parse(this.responseText);
+		// get the item nodelist from our response json object
+		var jsonObject = JSON.parse(this.responseText).restaurants;
+		// var OfferObject = JSON.parse(this.responseText).restaurants.available_offers;
 		
-		//loop each item in the xml
-		// for (var i = 0; i < jsonObject.length; i++) {
-		for (var i = 0; i < 5; i++) {
-		
+
+		for (var i = 0; i < jsonObject.length; i++) {
+			
+			id[i] = jsonObject[i].id;
+			name[i] = jsonObject[i].name;
+			address[i] = jsonObject[i].address;
+			phone_number[i] = jsonObject[i].phone_number;
+			// offer = jsonObject[i].available_offers;
+			//offer2[i] = jsonObject[i].tes;
+			
+			
+			//for (var f = 0; f <= offer.length; f++){
+			//	alert('offer' + i + ' = ' + offer[f]);
+			//};
+			
+			// alert('offer =' + offer[i]);
+			
+			// for (var f = 0; f < offer.length; f++) {
+				// offer2[f] = offer[f].id;
+// 				
+				// alert('offer2 = ' + offer2[f]);
+			// };
+										
 			//create a table row
 			var row = Titanium.UI.createTableViewRow({
-				height: _height / 8
+				height: _height / 8,
+				color:'white',
+				id:id[i],
+				name:name[i],
+				address:address[i],
+				phone_number:phone_number[i],
+				offer:offer							
 			});
 
 			//title label
 			var titleLabel = Titanium.UI.createLabel({
 				// text:jsonObject.notice,
-				text:'test' + [i],
-				font: {fontSize: _height / 24},
-				center:{x:'15%',y:'25%'},
+				text:name[i],
+				font: {fontSize: _height / 28},
+				left:'5%',
+				top:'10%',
 				color:'black',
-				textAlign:'left'
+				textAlign:'left',
+				textid:id[i]				
 			});
 			row.add(titleLabel);
 			
@@ -80,27 +129,37 @@ function LocationsWindow(title) {
 				backgroundImage:'/images/earn_points.png',
 				height: _height / 26,
 				width: _width / 4,
-				center:{x:'18%',y:'65%'}
+				left:'5%',
+				top:'55%'
 			});
 			row.add(bEarn);
-
+			
+			tblRecipes.addEventListener('click', function(e)
+			{
+				var LocationsDetailWindow = require('ui/common/LocationsDetail'),
+				locationsDetailWin = new LocationsDetailWindow(L('locations_title'), e.rowData.id, e.rowData.name, e.rowData.address, e.rowData.phone_number, e.rowData.offer);
+				
+				locationsDetailWin.open({animated:true});
+								
+			});
+			
 			//add the table row to our data[] object
 			data.push(row);
-	} //end for loop
+		}; //end for loop
 		
 	//set the data property of the tableView to data[] object
 	tblRecipes.data = data;
-	// };
-
-	//open up the recipes xml feed
-	// xhr.open('GET', 'http://www.test.com');
-
-	//finally, execute the call to the remote feed
-	// xhr.send();
+	};
+		
+	loader.open('GET', urlString);
+	loader.setRequestHeader('Content-Type', 'form-data');
+	loader.send();
 	
 	// self.add(vHeader);
 	self.add(vTop);
 	self.add(vBody);
+
+	
 	
 	return self;
 };

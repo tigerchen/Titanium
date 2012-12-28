@@ -1,28 +1,43 @@
 function MyRewardsWindow(title) {
-	
+		
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, '');
 	
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
 
+	var status = Ti.App.User._loginStatus;		
 
-//	var bBack = Titanium.UI.createButton({
-//		backgroundImage:'/images/back.png',
-//		center: {x:'15%', y:'50%'},
-//		height:'70%',
-//		width:'20%'	
-//	});
-//	vHeader.add(bBack);
+	self.addEventListener('open', function(e) {
+	if(status == 'false'){
+		var SignupWindow = require('ui/common/Signup'),
+			SignupWin = new SignupWindow(L('sign_up_title'));
+			
+		// Titanium.UI.currentWindow.open(SignupWin,{animated:true});
+		// self.containingTab.open(SignupWin,{animated:true});
+		SignupWin.open({animated:true});
+		
+	}else{	
+	
+
+	// Ti.include('ui/common/cekLoginStatus.js');
+
+	// var bBack = Titanium.UI.createButton({
+		// backgroundImage:'/images/back.png',
+		// center: {x:'15%', y:'50%'},
+		// height:'70%',
+		// width:'20%'	
+	// });
+	// vHeader.add(bBack);
 
 
 	//Body
 	var vBody = Titanium.UI.createView({
-		top: '10%',
+	    top: '10%',
 		left: '0%',
 		height: '25%',
 		width: '100%',
-		backgroundColor: 'white'
+		 backgroundColor: 'white'
 	});
 
 	var iRewards = Titanium.UI.createImageView({
@@ -31,7 +46,7 @@ function MyRewardsWindow(title) {
 		image: '/images/rewards_counter.png',
 		center: {x:'50%',y:'50%'}
 	});
-	vBody.add(iRewards);
+	 vBody.add(iRewards);
 
 	var lReward = Titanium.UI.createLabel({
 		center: {x:'32%', y:'30%'},
@@ -47,12 +62,25 @@ function MyRewardsWindow(title) {
 	});
 	vBody.add(lPoint);
 
+	
+	
 	var lActivity = Titanium.UI.createLabel({
-		center: {x:'25%', y:'68%'},
+		center: {x:'45%', y:'68%'},
 		font: {fontSize:width / 18, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-		text: 'View activity'
+		text: 'View activity',
+		width:'70%'
 	});
 	vBody.add(lActivity);
+
+	lActivity.addEventListener('click', function(e){
+	
+	var ActivityWindow = require('ui/common/Activity'),
+		activityWin = new ActivityWindow('Activity');
+				
+	activityWin.open({animated:true});
+	
+	});
+	
 
 
 
@@ -149,61 +177,11 @@ function MyRewardsWindow(title) {
 		textAlign:'center'
 	});
 	vOffer3.add(iOffer3);
-
-
-	//bSignup.addEventListener('click',function(e){
-	//	
-//		var hostURL = "http://10.0.2.2:3000/api/v1/user/signup?";
-	//	
-//		// var deviceUUID = Ti.Platform.macaddress; // Ti.Network.remoteDeviceUUID;
-//		// var deviceName = Ti.Platform.username;
-//		// var deviceModel = Ti.Platform.model;
-//		// var deviceSystemVersion = Ti.Platform.version;
-//		// var deviceToken = e.deviceToken;
-	//	
-//		var host = hostURL;
-//		var urlString = host;
-//		/*urlString += "&appname=" + appName;
-//		urlString += "&appversion=" + appVersion;
-//		urlString += "&deviceuid=" + deviceUUID;
-//		urlString += "&devicetoken=" + deviceToken;
-//		urlString += "&devicename=" + deviceName;
-//		urlString += "&devicemodel=" + deviceModel;
-//		urlString += "&deviceversion=" + deviceSystemVersion;*/
-	//	
-//		var latitude = '-6.923956';
-//		var longitude = '107.55317';
-//		var register_type = 'Email PWD';
-//		var osname = Ti.Platform.osname;
-//		var device_id = Titanium.Platform.id;			
-//					
-//		urlString += "email=" + tEmail.value;
-//		urlString += "&password=" + tPassword.value;
-//		urlString += "&latitude=" + latitude;
-//		urlString += "&longitude=" + longitude;
-//		urlString += "&register_type =" + register_type;
-//		urlString += "&register_device_type =" + osname;
-//		urlString += "&device_id =" + device_id;	
-//									
-//		var loader = Ti.Network.createHTTPClient();
-//		loader.setTimeout(60000);
-//					
-//		loader.onload = function(evt)
-//		{
-//			//alert(evt);
-//						
-//			//create json object using the Json.parse function
-//			var jsonObject = JSON.parse(this.responseText);
-//			alert(jsonObject.notice);
-//		}
-//					
-//		loader.open('POST', urlString, false);
-//		loader.send();
-	//	
-	//});
-
-//	self.add(vHeader);
+	
 	self.add(vBody);	
+	
+	};
+	});
 	
 	return self;
 };

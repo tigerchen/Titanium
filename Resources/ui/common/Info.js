@@ -5,8 +5,7 @@ function InfoWindow(title) {
 	
 	var _height = Ti.App.Device._height;
 	var _width = Ti.App.Device._width;
-
-	
+	var status = Ti.App.User._loginStatus;	
 
 	//create module instance
 	var AboutWindow = require('ui/common/About'),
@@ -14,6 +13,7 @@ function InfoWindow(title) {
 		FaqWindow = require('ui/common/Faq'),
 		MyProfileWindow = require('ui/common/MyProfile'),
 		PromoCodeWindow = require('ui/common/PromoCode'),
+		SignupWindow = require('ui/common/Signup'),
 		LoginWindow = require('ui/common/Login');	
 	
 	//create app tabs
@@ -22,6 +22,7 @@ function InfoWindow(title) {
 		faqWin = new FaqWindow(L('faq_title')),
 		myProfileWin = new MyProfileWindow(L('my_profile_title')),
 		promoCodeWin = new PromoCodeWindow(L('promo_code_title')),
+		SignupWin = new SignupWindow(L('sign_up_title')),
 		loginWin = new LoginWindow(L('login_title'));
 		
 		
@@ -46,6 +47,10 @@ function InfoWindow(title) {
 		{title:'Contact Us', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
 		{title:'Login', backgroundImage: '/images/formfield_bottom.png'}
 	];
+	
+	if(status == 'true'){
+		data[6].title = 'Logout';
+	}
 	
 	// create table view
 	for (var i = 0; i < data.length; i++ ) { data[i].color = '#000'; data[i].font = {fontWeight:'bold'} };
@@ -80,19 +85,42 @@ function InfoWindow(title) {
 			
 			}else if (e.index == 3){
 				
-				win = myProfileWin;
-			
+				if(status == 'false'){
+		
+		 			win = SignupWin;
+		
+				}else{
+					win = myProfileWin;
+				};
+
 			}else if (e.index == 4){
+				if(status == 'false'){
+		
+		 			win = SignupWin;
+		
+				}else{
 				
-				win = promoCodeWin;
-			
+					win = promoCodeWin;
+				};
+				
 			}else if (e.index == 5){
 				
 				win = Ti.include('ui/common/ContactUs.js');
 			
 			}else{
-				
-				win = loginWin;
+				if(status == 'false'){
+		
+		 			win = SignupWin;
+		
+				}else{									
+    				var Http = require('ui/common/HTTPClient'),
+						http = new Http('Logout', '');
+					
+					data[6].title = 'Login';
+					
+					return self;
+										
+				}
 			
 			};
 		
@@ -100,10 +128,16 @@ function InfoWindow(title) {
 			self.containingTab.open(win,{animated:true});	
 		};	
 		
-		
-		Ti.App.Device = {
-		_window:win
-		};		
+		// if(win == SignupWin && status == 'false'){
+			// Ti.App.Device = {
+				// _windowSignUp:win
+			// };
+// 		
+		// }else{
+			// Ti.App.Device = {
+				// _window:win
+			// };
+		// };		
 		
 	});
 	
