@@ -10,7 +10,7 @@ function ApplicationTabGroup() {
 	//create module instance
 	var self = Ti.UI.createTabGroup(),
 		LocationsWindow = require('ui/common/Locations'),
-		// LocationsWindow = require('ui/common/Activity'),
+		// LocationsWindow = require('ui/common/Survey'),
 		MyRewardsWindow = require('ui/common/MyRewards'),
 		WallWindow = require('ui/common/Wall'),
 		InfoWindow = require('ui/common/Info');

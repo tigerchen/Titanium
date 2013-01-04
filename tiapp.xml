@@ -42,7 +42,7 @@
             <uses-sdk android:minSdkVersion="8"/>
         </manifest>
     </android>
-    <property name="ti.android.fastdev">false</property> 
+    <property name="ti.android.fastdev">false</property>
     <property name="com.pushjaw.googlecloudmessaging.sender_id" type="string">361914095676</property>
     <!-- put your sender_id here -->
     <property name="com.pushjaw.googlecloudmessaging.icon" type="int">2130837504</property>

@@ -5,6 +5,9 @@ Logfile initialized
 [INFO] Titanium SDK version: 2.1.4 (11/09/12 12:46 51f2c64)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 0 devices/emulators
+[DEBUG] /Users/pushjaw/Documents/android-sdk/tools/emulator -avd titanium_19_WQVGA400 -port 5560 -sdcard /Users/pushjaw/.titanium/titanium_19_WQVGA400.sdcard -logcat *:d,*,TiAPI:V -no-boot-anim -partition-size 128
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
@@ -12,12 +15,21 @@ Logfile initialized
 [TRACE] adb devices returned 1 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 35 seconds)
-[DEBUG] waited 35.393838 seconds on emulator to get ready
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 75 seconds)
+[DEBUG] waited 79.525978 seconds on emulator to get ready
 [INFO] Waiting for the Android Emulator to become available
+[ERROR] Timed out waiting for android.process.acore
 [DEBUG] com.pushjaw.aroma installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
+[TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/app.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/app.js
+[TRACE] COPYING CREATED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/GetLatestVersion.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/GetLatestVersion.js
 [TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/HTTPClient.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/HTTPClient.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
@@ -123,6 +135,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/Confirmation.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ContactUs.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Faq.js
+[DEBUG] from resource zip => assets/Resources/ui/common/GetLatestVersion.js
 [DEBUG] from resource zip => assets/Resources/ui/common/GetPassword.js
 [DEBUG] from resource zip => assets/Resources/ui/common/HTTPClient.js
 [DEBUG] from resource zip => assets/Resources/ui/common/HowItWorks.js
@@ -152,9 +165,18 @@ Logfile initialized
 [DEBUG] from resource zip => assets/tiapp.xml
 [DEBUG] from resource zip => res/drawable/appicon.png
 [DEBUG] from resource zip => res/drawable/background.png
+[DEBUG] from resource zip => res/drawable/close.png
+[DEBUG] from resource zip => res/drawable/facebook_login.png
+[DEBUG] from resource zip => res/drawable/facebook_login_down.png
+[DEBUG] from resource zip => res/drawable/facebook_login_wide.png
+[DEBUG] from resource zip => res/drawable/facebook_login_wide_down.png
+[DEBUG] from resource zip => res/drawable/facebook_logout.png
+[DEBUG] from resource zip => res/drawable/facebook_logout_down.png
 [DEBUG] from resource zip => res/layout/titanium_tabgroup.xml
 [DEBUG] from resource zip => AndroidManifest.xml
 [DEBUG] from resource zip => resources.arsc
+[DEBUG] from resource zip => res/drawable-hdpi/close.png
+[DEBUG] from resource zip => res/drawable-ldpi/close.png
 [DEBUG] from resource zip => res/drawable-long-land-hdpi/background.png
 [DEBUG] from resource zip => res/drawable-long-land-ldpi/background.png
 [DEBUG] from resource zip => res/drawable-long-port-hdpi/background.png
@@ -186,6 +208,7 @@ Logfile initialized
 [DEBUG] from JAR /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/android/thirdparty.jar => org/apache/Commons-NOTICE.txt
 [DEBUG] from JAR /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/android/thirdparty.jar => org/apache/HttpComponents-NOTICE.txt
 [DEBUG] from JAR /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/android/thirdparty.jar => org/apache/mime4j-NOTICE.txt
+[DEBUG] from JAR /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/android/modules/titanium-facebook.jar => ti/modules/titanium/facebook/LICENSE
 [DEBUG] installing native lib: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/modules/android/com.pushjaw.googlecloudmessaging/0.3/libs/armeabi/libcom.pushjaw.googlecloudmessaging.so
 [DEBUG] installing native lib: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/modules/android/com.pushjaw.googlecloudmessaging/0.3/libs/armeabi-v7a/libcom.pushjaw.googlecloudmessaging.so
 [DEBUG] installing native lib: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/modules/android/com.pushjaw.googlecloudmessaging/0.3/libs/x86/libcom.pushjaw.googlecloudmessaging.so
@@ -193,7 +216,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.018934 seconds on emulator to get ready
+[DEBUG] waited 0.019288 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... AROMA ESPRESSO BAR
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.pushjaw.aroma/.AromaEspressoBarActivity }

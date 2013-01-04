@@ -126,6 +126,8 @@ self.addEventListener('focus', function(){
 					//create json object using the Json.parse function
 					jsonObject = JSON.parse(this.responseText);
 					
+					var survey_id = jsonObject.survey_id;
+					var receipt_id = jsonObject.receipt_id;
 					
 					var alert = Titanium.UI.createAlertDialog({
     					title: 'Information',
@@ -145,12 +147,12 @@ self.addEventListener('focus', function(){
  
        				switch (e.index) {
           				case 0: 
-							Ti.App.User = {
-								_survey_id:jsonObject.survey_id
-							};
+							// Ti.App.User = {
+								// _survey_id:jsonObject.survey_id
+							// };
 							
 							var SurveyWindow = require('ui/common/Survey'),
-								SurveyWin = new SurveyWindow('Survey', Ti.App.User._survey_id);
+								SurveyWin = new SurveyWindow('Survey', survey_id, receipt_id);
 				
 								SurveyWin.open({animated:true});
 																
@@ -178,7 +180,7 @@ self.addEventListener('focus', function(){
 					// Ti.API.info('ONSENDSTREAM - PROGRESS: ' + e.progress);
 				};
 				
-				loader.setTimeout(10000);
+				loader.setTimeout(20000);
 				loader.open('POST', urlString);
 				loader.send({image:image});
 		

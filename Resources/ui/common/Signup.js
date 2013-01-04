@@ -64,12 +64,16 @@ var bSignup = Titanium.UI.createButton({
 	height:'11%'
 });
 
+Ti.Facebook.appid = '[209214782545635]';
+Ti.Facebook.permissions = ['publish_stream', 'read_stream'];
+
 var bConnect = Titanium.UI.createButton({
 	backgroundImage:'/images/fb_connect.png',
 	center: {x:'50%', y:'66%'},
 	width:'85%',
 	height:'11%'
 });
+
 
 var lAlready = Titanium.UI.createLabel({
 	center: {x:'40%', y:'80%'},
@@ -141,6 +145,11 @@ bSignup.addEventListener('click',function(e){
 	).show();	
     };
 	
+});
+
+
+bConnect.addEventListener('click',function(e){
+	Titanium.Facebook.authorize();
 });
 
 vBody.add(bSignup);

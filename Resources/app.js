@@ -48,6 +48,7 @@ if (Ti.version < 1.8 ) {
 	}else{
 		Ti.App.Key = {
 		_Appkey: 'bTBTpVudV2AzZkLT'
+		// _Appkey: 'mcGUZ9aDIvGC4TUG'
 		};	
 	};
 	
@@ -82,8 +83,33 @@ if (Ti.version < 1.8 ) {
 	}
 	
 	theTabGroup.addEventListener('focus', function(e) {
-		var geolocation = require('ui/common/geolocation');
-  		var geo = new geolocation();
+		
+		if(Ti.App.Device._osname == 'android'){
+			
+			// alert('masuk sono');
+			
+			var GetLatestVersion = require('ui/common/GetLatestVersion');
+	  		var getLatest = new GetLatestVersion();
+			
+			var geolocation = require('ui/common/geolocation');
+	  		var geo = new geolocation();	
+		
+		}else{
+			
+			// alert('masuk sini');
+			
+			var GetLatestVersion = require('ui/common/GetLatestVersion');
+	  		var getLatest = new GetLatestVersion();
+			
+			// alert(GetLatestVersion);
+			
+			var geolocation = require('ui/common/geolocation');
+	  		var geo = new geolocation();
+	  		
+	  		
+			
+		};
+		
 	});
 	
 	

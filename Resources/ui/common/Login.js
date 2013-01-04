@@ -83,9 +83,23 @@ bLoggin.addEventListener('click',function(e){
 			{email:tEmail.value},
 			{password:tPassword.value}
 		];
-	
+		
+		var actInd = Ti.UI.createActivityIndicator({
+			width:100,
+			height:100,
+			message: 'loading...',
+			color: 'black',
+			top:'50%',
+			left:'35%',
+			style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+		});
+		vBody.add(actInd);
+		actInd.show();
+		
     	var Http = require('ui/common/HTTPClient'),
 			http = new Http('Login', data);
+    	
+    	actInd.hide();
     	
     }else{
     	Titanium.UI.createAlertDialog
