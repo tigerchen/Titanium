@@ -41,6 +41,10 @@ if (Ti.version < 1.8 ) {
 		_receipt_id:''
 	};
 	
+	Ti.App.Reward = {
+		_points:''
+	};
+	
 	if(Ti.App.Device._osname == 'android'){
 		Ti.App.Key = {
 		_Appkey: 'wp51dSKy4USzP5TQ'

@@ -127,19 +127,19 @@ function LocationsWindow(title) {
 					top:'55%'
 				});
 				row.add(bEarn);
-			
-				tblRecipes.addEventListener('click', function(e)
-				{
-					var LocationsDetailWindow = require('ui/common/LocationsDetail'),
-					locationsDetailWin = new LocationsDetailWindow(L('locations_title'), e.rowData.id, e.rowData.name, e.rowData.address, e.rowData.phone_number, e.rowData.offer);
-				
-					locationsDetailWin.open({animated:true});
-								
-				});
-			
+						
 				//add the table row to our data[] object
 				data.push(row);
 			}; //end for loop
+		
+			tblRecipes.addEventListener('click', function(e)
+			{
+				var LocationsDetailWindow = require('ui/common/LocationsDetail'),
+				locationsDetailWin = new LocationsDetailWindow(L('locations_title'), e.rowData.id, e.rowData.name, e.rowData.address, e.rowData.phone_number, e.rowData.offer);
+				
+				locationsDetailWin.open({animated:true});
+								
+			});
 		
 		//set the data property of the tableView to data[] object
 		tblRecipes.data = data;

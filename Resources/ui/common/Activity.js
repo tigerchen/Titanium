@@ -1,4 +1,4 @@
-function ActivityWindow(title) {
+function ActivityWindow(title, points) {
 	
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title,'back');
@@ -17,96 +17,37 @@ var vBody = Titanium.UI.createView({
 	backgroundColor:'white'
 });
 
-
 //Reward Top
 var vReward = Titanium.UI.createView({
-	center: {x:'50%', y:'7%'},
+	center: {x:'50%', y:'10%'},
 	height:'10%',
 	width:'90%',
 	backgroundImage:'/images/activity_top.png'
 });
 vBody.add(vReward);
-
+								
 var lReward = Titanium.UI.createLabel({
 	left:'5%',
 	top:'25%',
-	font: {fontSize:width / 18, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
+	font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
 	text: 'My reward points'
 });
 vReward.add(lReward);
-
+				
 var lPoint = Titanium.UI.createLabel({
-	right:'5%',
+	right:'2%',
 	top:'25%',
-	font: {fontSize:width / 18, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-	height:'60%',
-	width:'10%',
-	text:'75'	
+	font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
+	// height:'60%',
+	// width:'10%',
+	text:points	
 });
 vReward.add(lPoint);
 
-
-//Reward Middle
-var vPoints = Titanium.UI.createView({
-	center: {x:'50%', y:'17%'},
-	height:'10%',
-	width:'90%',
-	backgroundImage:'/images/activity_mid.png'
-});
-vBody.add(vPoints);
-
-//var lPoints = Titanium.UI.createLabel({
-//	left:'5%',
-//	top:'25%',
-//	font: {fontSize:width / 18, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-//	text: '01-15-12'
-//});
-//vPoints.add(lPoints);
-//
-//var lInfo = Titanium.UI.createLabel({
-//	right:'5%',
-//	top:'25%',
-//	font: {fontSize:width / 18, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-//	height:'60%',
-//	width:'10%',
-//	text:'14'	
-//});
-//vPoints.add(lInfo);
-
-
-//Reward Bottom
-//var vBPoints = Titanium.UI.createView({
-//	center: {x:'50%', y:'27%'},
-//	height:'10%',
-//	width:'90%',
-//	backgroundImage:'/images/activity_bottom.png'
-//});
-//vBody.add(vBPoints);
-//
-//var lBPoints = Titanium.UI.createLabel({
-//	left:'5%',
-//	top:'25%',
-//	font: {fontSize:width / 18, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-//	text: '01-26-12'
-//});
-//vBPoints.add(lBPoints);
-//
-//var lBInfo = Titanium.UI.createLabel({
-//	right:'5%',
-//	top:'25%',
-//	font: {fontSize:width / 18, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
-//	height:'60%',
-//	width:'10%',
-//	text:'21'	
-//});
-//vBPoints.add(lBInfo);
-
-
-
 self.addEventListener('focus',function(e){
 	
-	var hostURL = "http://10.0.2.2:3000/api/v1/user/activity?";
-	// var hostURL = "http://trelevant.herokuapp.com/api/v1/user/activity?";
+	// var hostURL = "http://10.0.2.2:3000/api/v1/user/activity?";
+	var hostURL = "http://trelevant.herokuapp.com/api/v1/user/activity?";
 			
 	var host = hostURL;
 	var urlString = host;
@@ -116,20 +57,116 @@ self.addEventListener('focus',function(e){
 								
 	var loader = Ti.Network.createHTTPClient();
 //	loader.setTimeout(60000);
+	
+	var data = []; //empty data array
+			
+		//create the table view
+		var tblRecipes = Titanium.UI.createTableView({
+			height: '80%',
+			width: '90%',
+			top: '14.5%',
+			left: '5%',
+			// rowHeight: height / 16,
+			style:Titanium.UI.iPhone.TableViewStyle.PLAIN,
+	    	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,
+			backgroundColor:'transparent',
+			borderRadius:5
+		});
+		vBody.add(tblRecipes);		
+		
 				
 	loader.onload = function(evt)
 	{
 		//alert(evt);
 					
 		//create json object using the Json.parse function
-		var jsonObject = JSON.parse(this.responseText);
+		var jsonObject = JSON.parse(this.responseText).receipts;
 		
 		for(var i = 0; i < jsonObject.length; i++){
 		
-			// alert(jsonObject.notice);
-			alert(jsonObject.receipts);
+			// alert('receipt = ' + jsonObject[i].last_transaction.receipt_date);
+			// alert(jsonObject[i].last_transaction.receipt_date);
+			
+			//create a table row
+		var row = Titanium.UI.createTableViewRow({
+				height: height / 12,
+				color:'white'
+										
+			});
+		
+					
+		//Reward Middle
+		var vPoints = Titanium.UI.createView({
+			height:'100%',
+			width:'100%',
+			backgroundImage:'/images/activity_mid.png'
+		});
+				
+		var lReceipt = Titanium.UI.createLabel({
+			left:'5%',
+			top:'25%',
+			font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
+			text: jsonObject[i].last_transaction.receipt_date
+		});
+		vPoints.add(lReceipt);
+
+		var lPoint = Titanium.UI.createLabel({
+			right:'2%',
+			top:'25%',
+			font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
+		});
+		vPoints.add(lPoint);
+		
+		var bInfo = Titanium.UI.createButton({
+			right:'2%',
+			top:'15%',
+			width:'8%',
+			height:'60%',
+			backgroundImage:'/images/activity_help.png'
+		});
+						
+		row.add(vPoints);
+		data.push(row);
+		
+		
+		if(jsonObject[i].last_transaction.status == 1){
+			lPoint.text = 'received';
+			lPoint.right = '15%';
+			
+			bInfo.addEventListener('click', function(){
+				alert('You Receipt was received. please wait for a moment for checking it.');
+			});		
+			vPoints.add(bInfo);			
+		}else if(jsonObject[i].last_transaction.status == 2){
+			lPoint.text = 'illegible';
+			lPoint.right = '15%';
+			
+			bInfo.addEventListener('click', function(){
+				alert('You Receipt was illegible. please send it again.');
+			});			
+			vPoints.add(bInfo);
+		}else if(jsonObject[i].last_transaction.status == 3){
+			lPoint.text = parseInt(jsonObject[i].last_transaction.total_points_earned);
+		}else if(jsonObject[i].last_transaction.status == 4){
+			lPoint.text = 'rejected';
+			lPoint.right = '15%';
+			
+			bInfo.addEventListener('click', function(){
+				alert('You Receipt rejected received. please contact support for more details.');
+			});
+			vPoints.add(bInfo);
+		}
+		
+		if(i == jsonObject.length - 1){
+			vPoints.backgroundImage = '/images/activity_bottom.png';
+		}
+		
+		
 		
 		};
+		
+		tblRecipes.data = data;
+		
 	};
 				
 	loader.open('GET', urlString);

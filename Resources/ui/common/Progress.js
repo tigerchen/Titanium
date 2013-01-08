@@ -1,7 +1,7 @@
 function ProgressWindow(title, image, restaurant_id, name, address, phone, offer_id) {
 	
 	var wSelf = require('ui/common/Window');
-	var self = new wSelf(title, '');
+	var self = new wSelf(title, 'cancel');
 		
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
