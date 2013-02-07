@@ -7,8 +7,8 @@ function SurveyWindow(title, survey_id, receipt_id) {
 	var width = Ti.App.Device._width;
 
 	// var survey_id = 1;
-	// var receipt_id = 1106;
-	// var auth_token = 'nDXNraH7GZTijiUvQcju';
+	// var receipt_id = 1172;
+	// var auth_token = 'cUM8rCG9Doy2zYYucdSc';
 	
 	var answer1 = 3.0;
 	var answer2 = 3.0;
@@ -24,7 +24,8 @@ function SurveyWindow(title, survey_id, receipt_id) {
 			contentHeight: 'auto',
 			showVerticalScrollIndicator: true,
 			showHorizontalScrollIndicator: true,
-			backgroundImage: '/images/comments.png'
+			// backgroundImage: '/images/comments.png'
+			backgroundColor:'white'
 	});
 	
 //Body
@@ -44,7 +45,7 @@ var lTell = Titanium.UI.createLabel({
 	top:'10%',
 	left:0,
 	text: '    TELL US WHAT YOU THINK',
-	font: {fontSize:width / 18, fontFamily: 'Helvetica'},
+	font: {fontSize:width / 18, fontFamily: 'Arial Rounded MT Bold'},
 	backgroundColor:'white',
 	color:'red'
 });
@@ -128,7 +129,7 @@ functionLabel = function(name, y, text) {
 			left: '5%',
 			top : y,
 			text: text,
-			font: {fontSize:width / 22, fontFamily: 'Helvetica'},
+			font: {fontSize:width / 22, fontFamily: 'Arial Rounded MT Bold'},
 			color: 'red'
 		});
 		vBody.add(Name);

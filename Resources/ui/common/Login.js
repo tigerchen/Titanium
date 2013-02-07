@@ -1,5 +1,7 @@
 function LoginWindow(title) {
 	
+	// Titanium.Facebook.logout();
+	
 	Ti.include('ui/common/globalVariabel.js');
 	// Ti.include('globalVariabel.js');
 	
@@ -21,47 +23,58 @@ var vBody = Titanium.UI.createView({
 });
 
 var lLog = Titanium.UI.createLabel({
-	center: {x:'17%', y:'10%'},
-	font: {fontSize:width / 16, fontFamily: 'Helvetica'}	,
+	top:'6%',
+	left:'10%',
+	font: {fontSize:width / 16, fontFamily: 'Arial Rounded MT Bold'}	,
 	text: 'Log in',
 	color:'red'	
 });
 vBody.add(lLog);
 
 var lInfo = Titanium.UI.createLabel({
-	center: {x:'22%', y:'16%'},
-	font: {fontSize:width / 24, fontFamily: 'Helvetica'}	,
+	top:'12%',
+	left:'10%',
+	font: {fontSize:width / 24, fontFamily: 'Arial'}	,
 	text: 'Welcome back!',
 	color:'black'	
 });
 vBody.add(lInfo);
 
+var container = Titanium.UI.createView({
+	center: {x:'50%', y:'30%'},
+	width:'80%',
+	height:'20%',
+	backgroundImage:'/images/formfield_2.png'
+});
+
 var tEmail = Titanium.UI.createTextField({
-	backgroundImage:'/images/formfield_top.png',
-	center: {x:'50%', y:'25%'},
-	width:'85%',
-	height:'10%',
+	left:0,
+	top:0,
+	width:'100%',
+	height:'50%',
 	hintText:'Email',
 	paddingLeft: 10
 });	
-vBody.add(tEmail);
+container.add(tEmail);
 
 var tPassword = Titanium.UI.createTextField({
-	backgroundImage:'/images/formfield_bottom.png',
-	center: {x:'50%', y:'35%'},
-	width:'85%',
-	height:'10%',
+	left:0,
+	bottom:0,
+	width:'100%',
+	height:'50%',
 	hintText:'Password',
 	passwordMask: true,
-	paddingLeft: 10
+	paddingLeft: 10,
+	minimumFontSize: 6	
 });	
-vBody.add(tPassword);
+container.add(tPassword);
+vBody.add(container);
 
 var bLoggin = Titanium.UI.createButton({
 	backgroundImage:'/images/login.png',
-	center: {x:'50%', y:'49%'},
-	width:'85%',
-	height:'11%'
+	center: {x:'50%', y:'51%'},
+	width:'80%',
+	height:'12%'
 });
 
 
@@ -84,23 +97,29 @@ bLoggin.addEventListener('click',function(e){
 			{password:tPassword.value}
 		];
 		
-		var actInd = Ti.UI.createActivityIndicator({
-			width:100,
-			height:100,
-			message: 'loading...',
-			color: 'black',
-			top:'50%',
-			left:'35%',
-			style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
-		});
-		vBody.add(actInd);
-		actInd.show();
-		
+		// var actInd = Ti.UI.createActivityIndicator({
+			// width:100,
+			// height:100,
+			// message: 'loading...',
+			// color: 'black',
+			// top:'50%',
+			// left:'35%',
+			// style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+		// });
+		// vBody.add(actInd);
+		// actInd.show();
+		// actInd.show();
+
     	var Http = require('ui/common/HTTPClient'),
 			http = new Http('Login', data);
-    	
-    	actInd.hide();
-    	
+        	
+    	// actInd.hide();
+		
+		// setTimeout(function(){
+		    // actInd.hide();
+		// }, 3000);
+		    	
+		    	
     }else{
     	Titanium.UI.createAlertDialog
 		(
@@ -114,16 +133,94 @@ bLoggin.addEventListener('click',function(e){
 });
 
 
-var bConnect = Titanium.UI.createButton({
-	backgroundImage:'/images/fb_connect.png',
-	center: {x:'50%', y:'64%'},
-	width:'85%',
-	height:'11%'
-});
+	
+	
+	var bConnect = Titanium.UI.createButton({
+		backgroundImage:'/images/fb_connect.png',
+		center: {x:'50%', y:'66%'},
+		width:'80%',
+		height:'12%'
+	});
 
+		
+	bConnect.addEventListener('click',function(e){
+			
+			// Titanium.Facebook.logout();
+			
+			var counter = 0;
+			
+			Ti.Facebook.appid = '314418145312548';
+			Ti.Facebook.permissions = ['publish_stream', 'read_stream', 'email'];
+			// var email = '';
+			
+			// Titanium.Facebook.forceDialogAuth = 'false';
+						
+			Titanium.Facebook.authorize();
+			
+			// capture
+			Titanium.Facebook.addEventListener('login', function(e){
+				 
+				 if (e.success) {
+		         	
+		            Titanium.Facebook.requestWithGraphPath('me', {}, 'GET', function(e) {
+		            // Titanium.Facebook.requestWithGraphPath('me', 'GET', function(e) {
+		                if (e.success) {
+		                   	var data = JSON.parse(e.result);
+		                    // Ti.API.info("Name:"+data.name);
+		                    // Ti.API.info("email:"+data.email);
+		                    // Ti.API.info("facebook Id:"+data.id);   
+							
+							// data_email = data.email;
+							
+							// Ti.App.Fb = {
+											// _email_user:data.email
+										// };
+																			                   
+		                    var data = [
+											{email:data.email}
+										];
+														
+							
+							if (counter == 0){
+								// var Http = require('ui/common/HTTPClient'),
+								// http = new Http('Login_Facebook', data);
+								
+								var Http = require('ui/common/HTTPClient'),
+									http = new Http('Login_Facebook', data);
+								
+								// alert('Masuk Counter : ' + counter);
+								
+								counter = counter + 1;	
+							}
+					    	
+		                    
+		                    
+		                } else if (e.error) {
+		                    alert(e.error);
+		         	    } else {
+		                    alert('Unknown response.');
+		                }
+		            });// request graph
+	            		            		            
+		         } else if (e.error) {
+		        	alert(e.error);
+		   		 } else if (e.cancelled) {
+		        	// alert("Cancelled");
+		       	 }
+			
+			});	
+			
+			// if (email != ''){
+				// Ti.API.info("email:"+email);
+			// }else{
+				// Ti.API.info("kosong");
+			// }			
+	});
+	
+	
 var lForgot = Titanium.UI.createLabel({
-	center: {x:'50%', y:'75%'},
-	font: {fontSize:width / 22, fontFamily: 'Helvetica'}	,
+	center: {x:'50%', y:'85%'},
+	font: {fontSize:width / 22, fontFamily: 'Arial Rounded MT Bold'}	,
 	text: 'Forgot your password?',
 	color:'red'
 });
@@ -133,11 +230,7 @@ lForgot.addEventListener('click', function(e){
 	var GetPasswordWindow = require('ui/common/GetPassword'),
 		GetPasswordWin = new GetPasswordWindow('Retrieve Password');
 		
-	GetPasswordWin.open({animated:true});
-	
-	Ti.App.Device = {
-		_windowForgot:GetPasswordWin
-	};
+	self.tabGroup.activeTab.open(GetPasswordWin,{animated:true});
 	
 });
 

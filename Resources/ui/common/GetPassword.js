@@ -1,7 +1,7 @@
 function GetPasswordWindow(title) {
 	
-	Ti.include('ui/common/globalVariabel.js');
-	Ti.include('globalVariabel.js');
+	// Ti.include('ui/common/globalVariabel.js');
+//	Ti.include('globalVariabel.js');
 	
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, 'cancel');
@@ -20,36 +20,40 @@ var vBody = Titanium.UI.createView({
 	backgroundColor:'white'
 });
 
-var lLog = Titanium.UI.createLabel({
-	center: {x:'45%', y:'21%'},
-	font: {fontSize:width / 12, fontFamily: 'Helvetica', fontWeight: 'bold'}	,
+var lRetrieve = Titanium.UI.createLabel({
+	top:'20%',
+	left:'10%',
+	font: {fontSize:width / 16, fontFamily: 'Arial Rounded MT Bold'}	,
 	text: 'Retrieve password',
 	color:'red'	
 });
-vBody.add(lLog);
+vBody.add(lRetrieve);
 
 var lInfo = Titanium.UI.createLabel({
-	center: {x:'50%', y:'27%'},
-	font: {fontSize:width / 26, fontFamily: 'Helvetica'},
+	top:'26%',
+	left:'10%',
+	font: {fontSize:width / 28, fontFamily: 'Arial'}	,
 	text: "Enter your email and we'll send you the password.",
 	color:'black'	
 });
 vBody.add(lInfo);
 
+
 var tEmail = Titanium.UI.createTextField({
 	backgroundImage:'/images/formfield_1.png',
 	center: {x:'50%', y:'38%'},
-	width:'85%',
+	width:'80%',
 	height:'10%',
-	hintText:'Email'
+	hintText:'Email',
+	paddingLeft: 10
 });	
 vBody.add(tEmail);
 
 var bSend = Titanium.UI.createButton({
 	backgroundImage:'/images/send.png',
 	center: {x:'50%', y:'53%'},
-	width:'85%',
-	height:'11%'
+	width:'80%',
+	height:'12%'
 });
 
 bSend.addEventListener('click',function(e){

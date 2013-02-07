@@ -1,7 +1,7 @@
 function ApplicationTabGroup() {
 	
 	var osname = Ti.App.Device._osname;
-	
+	var status = Ti.App.User._loginStatus;
 	// var geolocation = require('ui/common/geolocation');
   	// var geo = new geolocation();
 	
@@ -13,7 +13,8 @@ function ApplicationTabGroup() {
 		// LocationsWindow = require('ui/common/Survey'),
 		MyRewardsWindow = require('ui/common/MyRewards'),
 		WallWindow = require('ui/common/Wall'),
-		InfoWindow = require('ui/common/Info');
+		InfoWindow = require('ui/common/Info'),
+		SignupWindow = require('ui/common/Signup');
 	
 	
 	
@@ -22,32 +23,44 @@ function ApplicationTabGroup() {
 	// var locationsWin = new LocationsWindow(),
 		myRewardsWin = new MyRewardsWindow(L('my_rewards_title')),
 		wallWin = new WallWindow(L('wall_title')),
-		infoWin = new InfoWindow(L('info_title'));
+		infoWin = new InfoWindow(L('info_title')),
+		SignupWin = new SignupWindow(L('info_title'));
 	
 		
 	var locationsTab = Ti.UI.createTab({
 		title: L('locations_title'),
-		icon: '/images/nav/locations.png',
+		icon: '/images/nav_small/locations.png',
 		window: locationsWin
 	});
 	locationsWin.containingTab = locationsTab;
 	self.addTab(locationsTab);
 	
 	
-	
-	var myRewardsTab = Ti.UI.createTab({
-		title: L('my_rewards_title'),
-		icon: '/images/nav/rewards.png',
-		window: myRewardsWin
-	});
-	myRewardsWin.containingTab = myRewardsTab;
-	self.addTab(myRewardsTab);
-	
-	
+	if(status == 'false'){
+		
+		var myRewardsTab = Ti.UI.createTab({
+			title: L('my_rewards_title'),
+			icon: '/images/nav_small/rewards.png',
+			window: SignupWin
+		});
+		SignupWin.containingTab = myRewardsTab;
+		self.addTab(myRewardsTab);
+		
+	}else{
+		
+		var myRewardsTab = Ti.UI.createTab({
+			title: L('my_rewards_title'),
+			icon: '/images/nav_small/rewards.png',
+			window: myRewardsWin
+		});
+		myRewardsWin.containingTab = myRewardsTab;
+		self.addTab(myRewardsTab);
+		
+	};	
 	
 	var wallTab = Ti.UI.createTab({
 		title: L('wall_title'),
-		icon: '/images/nav/wall.png',
+		icon: '/images/nav_small/wall.png',
 		window: wallWin
 	});
 	wallWin.containingTab = wallTab;
@@ -57,19 +70,12 @@ function ApplicationTabGroup() {
 	
 	var infoTab = Ti.UI.createTab({
 		title: L('info_title'),
-		icon: '/images/nav/info.png',
+		icon: '/images/nav_small/info.png',
 		window: infoWin
 	});	
 	infoWin.containingTab = infoTab;
 	self.addTab(infoTab);
-	
-	if (osname == 'iphone' || osname == 'ipod'){
-		locationsTab.icon = '/images/nav_small/locations.png';
-		myRewardsTab.icon = '/images/nav_small/rewards.png';
-		wallTab.icon = '/images/nav_small/wall.png';
-		infoTab.icon = '/images/nav_small/info.png';
-	};
-	
+
 	self.setActiveTab(Ti.App.Index._index);
 	
 	

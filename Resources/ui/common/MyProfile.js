@@ -17,9 +17,10 @@ var vBody = Titanium.UI.createView({
 });
 
 var lLog = Titanium.UI.createLabel({
-	center: {x:'31%', y:'15%'},
-	font: {fontSize:width / 20, fontFamily: 'Helvetica'}	,
-	text: '   Update your password',
+	top:'10%',
+	left:'10%',
+	font: {fontSize:width / 18, fontFamily: 'Arial Rounded MT Bold'}	,
+	text: 'Update your password',
 	color:'red'	
 });
 vBody.add(lLog);
@@ -27,7 +28,7 @@ vBody.add(lLog);
 var tOld = Titanium.UI.createTextField({
 	backgroundImage:'/images/formfield_top.png',
 	center: {x:'50%', y:'24%'},
-	width:'85%',
+	width:'80%',
 	height:'10%',
 	hintText:'Old Password',
 	passwordMask: true,
@@ -38,7 +39,7 @@ vBody.add(tOld);
 var tPassword = Titanium.UI.createTextField({
 	backgroundImage:'/images/formfield_middle.png',
 	center: {x:'50%', y:'34%'},
-	width:'85%',
+	width:'80%',
 	height:'10%',
 	hintText:'Password',
 	passwordMask: true,
@@ -49,7 +50,7 @@ vBody.add(tPassword);
 var tRPassword = Titanium.UI.createTextField({
 	backgroundImage:'/images/formfield_bottom.png',
 	center: {x:'50%', y:'44%'},
-	width:'85%',
+	width:'80%',
 	height:'10%',
 	hintText:'Repeat password',
 	passwordMask: true,
@@ -60,8 +61,8 @@ vBody.add(tRPassword);
 var bSend = Titanium.UI.createButton({
 	backgroundImage:'/images/send.png',
 	center: {x:'50%', y:'60%'},
-	width:'85%',
-	height:'11%'
+	width:'80%',
+	height:'12%'
 });
 
 bSend.addEventListener('click',function(e){

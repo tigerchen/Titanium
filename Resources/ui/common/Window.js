@@ -3,13 +3,14 @@ function Window(title, button) {
 	var osname = Ti.App.Device._osname;
 
 	//window
-	 var self = Ti.UI.createWindow({
+	 var self = Titanium.UI.createWindow({
 	 title:title,
 	 backgroundColor:'black',
 	 navBarHidden:true,
 	 exitOnClose:false
 	 // modal:true
 	 });
+	
 		
 	//Header
 	var vHeader = Titanium.UI.createView({
@@ -20,14 +21,13 @@ function Window(title, button) {
 		backgroundImage:'/images/topbar.png'
 	});
 	self.add(vHeader);	
-
-	
-	self.addEventListener('android:back', function(e) {
-		self.close();	
-	});	
-	
 	
 	if(button == 'back'){		
+		
+		self.addEventListener('android:back', function(e) {
+			self.close();	
+		});	
+	
 		
 		var bBack = Titanium.UI.createButton({
 		backgroundImage:'/images/back.png',
@@ -40,6 +40,20 @@ function Window(title, button) {
 			bBack.addEventListener("click", function(e) { 
     			self.fireEvent('android:back');
 			});
+		
+		// if(title == 'Take Photo'){
+// 			
+// 			
+// 			
+			// bBack.addEventListener("click", function(e) { 
+    			// self.fireEvent('android:back');
+//     			
+    			// var TakePhotoWindow = require('ui/common/TakePhoto_ios'),
+					// TakePhotoWin = new TakePhotoWindow('Take Photo', id, name, address, phone, offer_id);
+// 			
+					// self.tabGroup.activeTab.open(TakePhotoWin,{animated:true});
+			// });
+		// }	
 	
 			// bBack.addEventListener("click", function(e) {  		
 //     		    		
@@ -52,6 +66,11 @@ function Window(title, button) {
 		vHeader.add(bBack);		
 	
 	}else if(button == 'cancel'){
+		
+		self.addEventListener('android:back', function(e) {
+			self.close();	
+		});	
+	
 		
 		var bCancel = Titanium.UI.createButton({
 		backgroundImage: '/images/cancel.png',
@@ -86,9 +105,7 @@ function Window(title, button) {
 	
 	};
 	
-	
-	
-	
+		
 		
 	return self;
 };

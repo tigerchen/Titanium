@@ -29,10 +29,7 @@ function LocationsWindow(title) {
 
 	
 	self.addEventListener('focus', function(e){
-		
-		
-		
-				
+						
 		// alert('Latitude = ' + Ti.App.Location._latitude);
 	
 		// var hostURL = "http://10.0.2.2:3000/api/v1/offers/nearby?";
@@ -61,18 +58,21 @@ function LocationsWindow(title) {
 		//create the table view
 		var tblRecipes = Titanium.UI.createTableView({
 			height: '100%',
-			width: '100%',
-			center:{x:'50%', y:'50%'}
+			width: '95%',
+			center:{x:'50%', y:'50%'},
+			style:Titanium.UI.iPhone.TableViewStyle.GROUPEDPLAIN,
+    		separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,
+			backgroundColor:'transparent',
+			hasChild:true
 		});
 		vBody.add(tblRecipes);
 
 		//this method will process the remote data
 		loader.onload = function() {
-
+									
 			// get the item nodelist from our response json object
 			var jsonObject = JSON.parse(this.responseText).restaurants;
 			// var OfferObject = JSON.parse(this.responseText).available_offers;
-		
 
 			for (var i = 0; i < jsonObject.length; i++) {
 			
@@ -80,70 +80,89 @@ function LocationsWindow(title) {
 				name[i] = jsonObject[i].name;
 				address[i] = jsonObject[i].address;
 				phone_number[i] = jsonObject[i].phone_number;
-			    offer[i] = jsonObject[i].available_offers[i].id;
-				//offer2[i] = jsonObject[i].tes;
-					
-				 // alert('offer_id = ' + offer);
-										
-				//create a table row
-				var row = Titanium.UI.createTableViewRow({
-					height: _height / 8,
-					color:'white',
-					id:id[i],
-					name:name[i],
-					address:address[i],
-					phone_number:phone_number[i],
-					offer:offer[i]							
-				});
-
-				//title label
-				var titleLabel = Titanium.UI.createLabel({
-					// text:jsonObject.notice,
-					text:name[i],
-					font: {fontSize: _height / 28},
-					left:'5%',
-					top:'10%',
-					color:'black',
-					textAlign:'left',
-					textid:id[i]				
-				});
-				row.add(titleLabel);
-			
-				//add our little icon to the left of the row
-				var iconImage = Titanium.UI.createImageView({
-					image: '/images/arrow.png',
-					height: _height / 28,
-					width: _width/22,
-					center:{x:'95%',y:'50%'}
-				});
-				row.add(iconImage);
-			
-				//add our little icon to the left of the row
-				var bEarn = Titanium.UI.createButton({
-					backgroundImage:'/images/earn_points.png',
-					height: _height / 26,
-					width: _width / 4,
-					left:'5%',
-					top:'55%'
-				});
-				row.add(bEarn);
-						
-				//add the table row to our data[] object
-				data.push(row);
-			}; //end for loop
-		
-			tblRecipes.addEventListener('click', function(e)
-			{
-				var LocationsDetailWindow = require('ui/common/LocationsDetail'),
-				locationsDetailWin = new LocationsDetailWindow(L('locations_title'), e.rowData.id, e.rowData.name, e.rowData.address, e.rowData.phone_number, e.rowData.offer);
 				
-				locationsDetailWin.open({animated:true});
+				if(jsonObject[i].available_offers[0] != null){
 								
-			});
+						offer[i] = jsonObject[i].available_offers[0].id;
+					    // offer[i] = jsonObject[i].available_offers[i].id;
+						//offer2[i] = jsonObject[i].tes;
+										
+						 // alert('offer_id = ' + offer[i]);
+												
+						//create a table row
+						var row = Titanium.UI.createTableViewRow({
+							height: _height / 6,
+							color:'white',
+							id:id[i],
+							name:name[i],
+							address:address[i],
+							phone_number:phone_number[i],
+							offer:offer[i]							
+						});
 		
-		//set the data property of the tableView to data[] object
-		tblRecipes.data = data;
-		};
+						//title label
+						var titleLabel = Titanium.UI.createLabel({
+							// text:jsonObject.notice,
+							text:name[i],
+							font: {fontSize: _height / 28, fontFamily: 'Arial Rounded MT Bold'},
+							left:'5%',
+							top:'22%',
+							color:'black',
+							textAlign:'left',
+							textid:id[i]				
+						});
+						row.add(titleLabel);
+					
+						//add our little icon to the left of the row
+						var iconImage = Titanium.UI.createImageView({
+							image: '/images/arrow.png',
+							height: _height / 28,
+							width: _width/22,
+							center:{x:'95%',y:'50%'}
+						});
+						row.add(iconImage);
+					
+						//add our little icon to the left of the row
+						var iEarn = Titanium.UI.createImageView({
+							image:'/images/earn_points.png',
+							height: _height / 21,
+							width: _width / 3,
+							left:'4%',
+							
+							top:'55%'
+						});
+						row.add(iEarn);
+						
+						var lLine = Titanium.UI.createLabel({
+							left:0,
+							bottom:0,
+							width:'100%',
+							height:0,
+							backgroundImage:'/images/line.png'
+						});
+						row.add(lLine);
+								
+						//add the table row to our data[] object
+						data.push(row);
+				
+				
+						// }; //end for loop
+					
+						tblRecipes.addEventListener('click', function(e)
+						{
+							var LocationsDetailWindow = require('ui/common/LocationsDetail'),
+							locationsDetailWin = new LocationsDetailWindow(L('locations_title'), e.rowData.id, e.rowData.name, e.rowData.address, e.rowData.phone_number, e.rowData.offer);
+							
+							self.containingTab.open(locationsDetailWin,{animated:true});
+											
+						});
+					
+					//set the data property of the tableView to data[] object
+					tblRecipes.data = data;
+					
+					};
+				};
+			};
 		
 		loader.open('GET', urlString);
 		loader.setRequestHeader('Content-Type', 'form-data');

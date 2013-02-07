@@ -6,7 +6,15 @@ function ActivityWindow(title, points) {
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
 
-
+	var actInd = Ti.UI.createActivityIndicator({
+	 		width:100,
+			height:100,
+			message: 'loading...',
+			color: 'black',
+			top:'30%',
+			left:'55%',
+			style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+	});
 
 //Body
 var vBody = Titanium.UI.createView({
@@ -19,8 +27,8 @@ var vBody = Titanium.UI.createView({
 
 //Reward Top
 var vReward = Titanium.UI.createView({
-	center: {x:'50%', y:'10%'},
-	height:'10%',
+	center: {x:'50%', y:'9%'},
+	height:'12%',
 	width:'90%',
 	backgroundImage:'/images/activity_top.png'
 });
@@ -29,22 +37,26 @@ vBody.add(vReward);
 var lReward = Titanium.UI.createLabel({
 	left:'5%',
 	top:'25%',
-	font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
-	text: 'My reward points'
+	font: {fontSize:width / 16, fontFamily: 'Arial Rounded MT Bold'}	,
+	text: 'My reward points',
+	color:'gray'
 });
 vReward.add(lReward);
 				
 var lPoint = Titanium.UI.createLabel({
 	right:'2%',
 	top:'25%',
-	font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
+	font: {fontSize:width / 16, fontFamily: 'Arial Rounded MT Bold'}	,
 	// height:'60%',
 	// width:'10%',
-	text:points	
+	text:points,
+	color:'gray'
 });
 vReward.add(lPoint);
 
 self.addEventListener('focus',function(e){
+	
+	actInd.show();
 	
 	// var hostURL = "http://10.0.2.2:3000/api/v1/user/activity?";
 	var hostURL = "http://trelevant.herokuapp.com/api/v1/user/activity?";
@@ -106,7 +118,8 @@ self.addEventListener('focus',function(e){
 			left:'5%',
 			top:'25%',
 			font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
-			text: jsonObject[i].last_transaction.receipt_date
+			text: jsonObject[i].last_transaction.receipt_date,
+			color:'gray'
 		});
 		vPoints.add(lReceipt);
 
@@ -114,6 +127,7 @@ self.addEventListener('focus',function(e){
 			right:'2%',
 			top:'25%',
 			font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
+			color:'gray'
 		});
 		vPoints.add(lPoint);
 		
@@ -164,6 +178,8 @@ self.addEventListener('focus',function(e){
 		
 		
 		};
+		
+		actInd.hide();
 		
 		tblRecipes.data = data;
 		

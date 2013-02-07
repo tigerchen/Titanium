@@ -37,7 +37,6 @@ dependencies: \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/ASI/ASICacheDelegate.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/ASI/ASINetworkQueue.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/Ti2DMatrix.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/Ti3DMatrix.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiViewProxy.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiApp.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiHost.h \

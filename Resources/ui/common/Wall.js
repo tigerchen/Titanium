@@ -21,17 +21,17 @@ function WallWindow(title) {
 		});	
 	vBody.add(webview);
 
-	var bBack = Titanium.UI.createButton({
-		backgroundImage:'/images/back.png',
-		center: {x:'15%', y:'4.5%'},
-		height:'8%',
-		width:'20%'	
-	});
-	
-	bBack.addEventListener("click", function(e) {  		
-		webview.goBack();		
-	});	
-	self.add(bBack);
+//	var bBack = Titanium.UI.createButton({
+//		backgroundImage:'/images/back.png',
+//		center: {x:'15%', y:'4.5%'},
+//		height:'8%',
+//		width:'20%'	
+//	});
+//	
+//	bBack.addEventListener("click", function(e) {  		
+//		webview.goBack();		
+//	});	
+//	self.add(bBack);
 	
 	return self;
 };

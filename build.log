@@ -1,6 +1,6 @@
 Logfile initialized
 [INFO] logfile = /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build.log
-[DEBUG] /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/android/builder.py simulator AROMA ESPRESSO BAR /Users/pushjaw/Documents/android-sdk /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR com.pushjaw.aroma 19 WQVGA400 
+[DEBUG] /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/android/builder.py simulator AROMA ESPRESSO BAR /Users/pushjaw/Documents/android-sdk /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR com.pushjaw.aroma 19 WVGA854 
 [INFO] Building AROMA ESPRESSO BAR for Android ... one moment
 [INFO] Titanium SDK version: 2.1.4 (11/09/12 12:46 51f2c64)
 [DEBUG] Waiting for device to be ready ...
@@ -9,12 +9,13 @@ Logfile initialized
 [TRACE] adb devices returned 1 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 15 seconds)
-[DEBUG] waited 15.105456 seconds on emulator to get ready
+[DEBUG] waited 15.379447 seconds on emulator to get ready
 [INFO] Waiting for the Android Emulator to become available
 [DEBUG] com.pushjaw.aroma installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/Progress.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/Progress.js
+[TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/HTTPClient.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/HTTPClient.js
+[TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/Login.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/Login.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] found special platform files dir = /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/platform/android
@@ -69,11 +70,21 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/about_logo.png
 [DEBUG] from resource zip => assets/Resources/images/activity_bottom.png
 [DEBUG] from resource zip => assets/Resources/images/activity_help.png
+[DEBUG] from resource zip => assets/Resources/images/activity_help_potrait.png
 [DEBUG] from resource zip => assets/Resources/images/activity_mid.png
 [DEBUG] from resource zip => assets/Resources/images/activity_top.png
 [DEBUG] from resource zip => assets/Resources/images/arrow.png
 [DEBUG] from resource zip => assets/Resources/images/arrow_2.png
 [DEBUG] from resource zip => assets/Resources/images/back.png
+[DEBUG] from resource zip => assets/Resources/images/camera-a.png
+[DEBUG] from resource zip => assets/Resources/images/camera-a_potrait.png
+[DEBUG] from resource zip => assets/Resources/images/camera-cancel.png
+[DEBUG] from resource zip => assets/Resources/images/camera-cancel_potrait.png
+[DEBUG] from resource zip => assets/Resources/images/camera-help.png
+[DEBUG] from resource zip => assets/Resources/images/camera-help_potrait.png
+[DEBUG] from resource zip => assets/Resources/images/camera-retake.png
+[DEBUG] from resource zip => assets/Resources/images/camera-submit.png
+[DEBUG] from resource zip => assets/Resources/images/camera_bar.png
 [DEBUG] from resource zip => assets/Resources/images/cancel.png
 [DEBUG] from resource zip => assets/Resources/images/claim_bg.png
 [DEBUG] from resource zip => assets/Resources/images/comments.png
@@ -85,12 +96,15 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/example.png
 [DEBUG] from resource zip => assets/Resources/images/fb_connect.png
 [DEBUG] from resource zip => assets/Resources/images/formfield_1.png
+[DEBUG] from resource zip => assets/Resources/images/formfield_2.png
 [DEBUG] from resource zip => assets/Resources/images/formfield_bottom.png
 [DEBUG] from resource zip => assets/Resources/images/formfield_middle.png
 [DEBUG] from resource zip => assets/Resources/images/formfield_top.png
 [DEBUG] from resource zip => assets/Resources/images/guide.png
+[DEBUG] from resource zip => assets/Resources/images/guide_potrait.png
 [DEBUG] from resource zip => assets/Resources/images/help.png
 [DEBUG] from resource zip => assets/Resources/images/how_to.png
+[DEBUG] from resource zip => assets/Resources/images/line.png
 [DEBUG] from resource zip => assets/Resources/images/login.png
 [DEBUG] from resource zip => assets/Resources/images/map_button.png
 [DEBUG] from resource zip => assets/Resources/images/mark_as_used.png
@@ -110,13 +124,15 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/images/thumbs_down.png
 [DEBUG] from resource zip => assets/Resources/images/thumbs_up.png
 [DEBUG] from resource zip => assets/Resources/images/topbar.png
+[DEBUG] from resource zip => assets/Resources/images/topbar_blank-a.png
 [DEBUG] from resource zip => assets/Resources/images/topbar_blank.png
+[DEBUG] from resource zip => assets/Resources/images/topbar_teks.jpg
+[DEBUG] from resource zip => assets/Resources/images/topbar_teks_potrait.jpg
 [DEBUG] from resource zip => assets/Resources/ui/common/APN.js
 [DEBUG] from resource zip => assets/Resources/ui/common/About.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Activity.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ApplicationTabGroup.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Claim.js
-[DEBUG] from resource zip => assets/Resources/ui/common/Claimed.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Confirmation.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ContactUs.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Faq.js
@@ -136,10 +152,12 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/Signup.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Survey.js
 [DEBUG] from resource zip => assets/Resources/ui/common/TakePhoto.js
+[DEBUG] from resource zip => assets/Resources/ui/common/TakePhoto_ios.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Wall.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Window.js
 [DEBUG] from resource zip => assets/Resources/ui/common/geolocation.js
 [DEBUG] from resource zip => assets/Resources/ui/common/globalVariabel.js
+[DEBUG] from resource zip => assets/Resources/ui/common/version.js
 [DEBUG] from resource zip => assets/Resources/KS_nav_ui.png
 [DEBUG] from resource zip => assets/Resources/KS_nav_views.png
 [DEBUG] from resource zip => assets/Resources/app.js
@@ -197,11 +215,14 @@ Logfile initialized
 [DEBUG] installing native lib: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/modules/android/com.pushjaw.googlecloudmessaging/0.3/libs/armeabi/libcom.pushjaw.googlecloudmessaging.so
 [DEBUG] installing native lib: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/modules/android/com.pushjaw.googlecloudmessaging/0.3/libs/armeabi-v7a/libcom.pushjaw.googlecloudmessaging.so
 [DEBUG] installing native lib: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/modules/android/com.pushjaw.googlecloudmessaging/0.3/libs/x86/libcom.pushjaw.googlecloudmessaging.so
+[DEBUG] installing native lib: /Users/pushjaw/Library/Application Support/Titanium/modules/android/com.relevant.cameraandroid/1.0/libs/armeabi/libcom.relevant.cameraandroid.so
+[DEBUG] installing native lib: /Users/pushjaw/Library/Application Support/Titanium/modules/android/com.relevant.cameraandroid/1.0/libs/armeabi-v7a/libcom.relevant.cameraandroid.so
+[DEBUG] installing native lib: /Users/pushjaw/Library/Application Support/Titanium/modules/android/com.relevant.cameraandroid/1.0/libs/x86/libcom.relevant.cameraandroid.so
 [DEBUG] installing native SDK libs
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.019878 seconds on emulator to get ready
+[DEBUG] waited 0.020699 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... AROMA ESPRESSO BAR
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.pushjaw.aroma/.AromaEspressoBarActivity }

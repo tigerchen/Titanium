@@ -1,5 +1,5 @@
 function InfoWindow(title) {
-	
+			
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, '');
 	
@@ -51,19 +51,18 @@ function InfoWindow(title) {
 	if(status == 'true'){
 		data[6].title = 'Logout';
 	}
-	
+		
 	// create table view
-	for (var i = 0; i < data.length; i++ ) { data[i].color = '#000'; data[i].font = {fontWeight:'bold'} };
+	for (var i = 0; i < data.length; i++ ) { data[i].color = 'gray'; data[i].font = {fontWeight:'bold'}};
 	var tableview = Titanium.UI.createTableView({
 		data:data,
 		rowHeight: _height / 10,
 		style:Titanium.UI.iPhone.TableViewStyle.PLAIN,
-    	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,
+    	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,	
 		backgroundColor:'transparent',
-		borderRadius:5,
-    	top:'12%', 
+		top:'12%', 
     	width:'90%',
-    	height:'90%'	
+    	height:'90%'    		
 	});
 
 	// create table view event listener
@@ -144,6 +143,7 @@ function InfoWindow(title) {
 	// add table view to the window
 	self.add(tableview);
 		
+	
 	
 	return self;
 };

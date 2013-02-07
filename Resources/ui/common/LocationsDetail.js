@@ -6,6 +6,11 @@ function LocationsDetailWindow(title, id, name, address, phone, offer_id) {
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
 	
+	var osname = Ti.App.Device._osname;
+	var status = Ti.App.User._loginStatus;
+	
+	// alert('Offer Id = ' + offer_id);
+	
 	//Body
 	var vBody = Titanium.UI.createView({
 		top:'10%',
@@ -23,19 +28,32 @@ function LocationsDetailWindow(title, id, name, address, phone, offer_id) {
 	});
 	
 	bSubmit.addEventListener('click', function(){
-		var status = Ti.App.User._loginStatus;
-		
+								
 		if(status == 'false'){
+						
 			var SignupWindow = require('ui/common/Signup'),
 				SignupWin = new SignupWindow(L('sign_up_title'));
 			
-				SignupWin.open({animated:true});
+			self.tabGroup.activeTab.open(SignupWin,{animated:true});
 		
 		}else{
-			var TakePhotoWindow = require('ui/common/TakePhoto'),
-				TakePhotoWin = new TakePhotoWindow('Take Photo', id, name, address, phone, offer_id);
+					
+			if(osname == 'android'){
+				
+				var TakePhotoWindow = require('ui/common/TakePhoto'),
+					TakePhotoWin = new TakePhotoWindow('Take Photo', id, name, address, phone, offer_id);
 			
-				TakePhotoWin.open({animated:true});
+					// TakePhotoWin.open({animated:true});
+						
+			}else{
+				
+				var TakePhotoWindow = require('ui/common/TakePhoto_ios'),
+					TakePhotoWin = new TakePhotoWindow('Take Photo', id, name, address, phone, offer_id);
+			
+					self.tabGroup.activeTab.open(TakePhotoWin,{animated:true});
+				
+			};
+			
 		};
 	});	
 	vBody.add(bSubmit);

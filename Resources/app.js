@@ -37,12 +37,21 @@ if (Ti.version < 1.8 ) {
 	Ti.App.User = {
 		_loginStatus:'false',
 		_auth_token:'',
+		// _auth_token:'1qrxRp5wsQqoFcWZLQXk',
 		_survey_id:'',
 		_receipt_id:''
 	};
 	
 	Ti.App.Reward = {
 		_points:''
+	};
+	
+	Ti.App.Restaurant = {
+		_restaurant_id:''
+	};
+	
+	Ti.App.Fb = {
+		_email_user:''
 	};
 	
 	if(Ti.App.Device._osname == 'android'){
@@ -66,6 +75,7 @@ if (Ti.version < 1.8 ) {
 		_latitude: '',
 		_longitude:''
 	};		
+	
 	
 	//considering tablet to have one dimension over 900px - this is imperfect, so you should feel free to decide
 	//yourself what you consider a tablet form factor for android

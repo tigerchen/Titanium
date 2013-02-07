@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 01/09/13 01:37
+Starting build at 02/07/13 20:38
 
 Build details:
 
@@ -18,7 +18,7 @@ Build details:
 Script arguments:
    /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/iphone/builder.py
    simulator
-   6.0
+   6.1
    /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR
    com.pushjaw.aroma
    AROMA ESPRESSO BAR

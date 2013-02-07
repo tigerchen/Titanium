@@ -25,7 +25,8 @@ vBody.add(iAbout);
 
 var vStory = Titanium.UI.createView({
 	center: {x:'50%', y:'65%'},
-	backgroundImage:'/images/comments.png',
+//	backgroundImage:'/images/comments.png',
+	backgroundColor:'white',
 	width:'90%',
 	height:'60%'
 });

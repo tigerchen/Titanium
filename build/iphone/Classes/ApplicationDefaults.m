@@ -18,6 +18,7 @@
     [_property setObject:[TiUtils stringValue:@"361914095676"] forKey:@"com.pushjaw.googlecloudmessaging.sender_id"];
     [_property setObject:[NSNumber numberWithInt:[TiUtils intValue:@"2130837504"]] forKey:@"com.pushjaw.googlecloudmessaging.icon"];
     [_property setObject:[TiUtils stringValue:@"gcm.gcm/gcm.gcm.GcmActivity"] forKey:@"com.pushjaw.googlecloudmessaging.component"];
+    [_property setObject:[TiUtils stringValue:@"314418145312548"] forKey:@"ti.facebook.appid"];
 
     return _property;
 }

@@ -2,10 +2,13 @@ function SignupWindow(title) {
 	
 	var wSelf = require('ui/common/Window'),
 	self = new wSelf(title, 'cancel');
-		
+			
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
+	var osname = Ti.App.Device._osname;
 
+	// alert('osname = ' + osname);
+	
 	// Ti.App.Device = {
 			// _window:self
 	// };
@@ -20,71 +23,71 @@ var vBody = Titanium.UI.createView({
 });
 
 var lSign = Titanium.UI.createLabel({
-	center: {x:'19%', y:'10%'},
-	font: {fontSize:width / 16, fontFamily: 'Helvetica'}	,
+	top:'6%',
+	left:'10%',
+	font: {fontSize:width / 16, fontFamily: 'Arial Rounded MT Bold'}	,
 	text: 'Sign up',
 	color:'red'	
 });
 vBody.add(lSign);
 
 var lInfo = Titanium.UI.createLabel({
-	center: {x:'35%', y:'15%'},
-	font: {fontSize:width / 24, fontFamily: 'Helvetica'}	,
+	top:'12%',
+	left:'10%',
+	font: {fontSize:width / 24, fontFamily: 'Arial'}	,
 	text: 'to keep track of your rewards',
 	color:'black'	
 });
 vBody.add(lInfo);
 
+var container = Titanium.UI.createView({
+	center: {x:'50%', y:'30%'},
+	width:'80%',
+	height:'20%',
+	backgroundImage:'/images/formfield_2.png'
+});
+
 var tEmail = Titanium.UI.createTextField({
-	backgroundImage:'/images/formfield_top.png',
-	center: {x:'50%', y:'26%'},
-	width:'85%',
-	height:'10%',
+	left:0,
+	top:0,
+	width:'100%',
+	height:'50%',
 	hintText:'Email',
 	paddingLeft: 10
 });	
-vBody.add(tEmail);
+container.add(tEmail);
 
 var tPassword = Titanium.UI.createTextField({
-	backgroundImage:'/images/formfield_bottom.png',
-	center: {x:'50%', y:'36%'},
-	width:'85%',
-	height:'10%',
+	left:0,
+	bottom:0,
+	width:'100%',
+	height:'50%',
 	hintText:'Password',
 	passwordMask: true,
 	paddingLeft: 10,
 	minimumFontSize: 6	
 });	
-vBody.add(tPassword);
+container.add(tPassword);
+vBody.add(container);
+
 
 var bSignup = Titanium.UI.createButton({
 	backgroundImage:'/images/signup.png',
 	center: {x:'50%', y:'51%'},
-	width:'85%',
-	height:'11%'
+	width:'80%',
+	height:'12%'	
 });
-
-Ti.Facebook.appid = '[209214782545635]';
-Ti.Facebook.permissions = ['publish_stream', 'read_stream'];
-
-var bConnect = Titanium.UI.createButton({
-	backgroundImage:'/images/fb_connect.png',
-	center: {x:'50%', y:'66%'},
-	width:'85%',
-	height:'11%'
-});
-
 
 var lAlready = Titanium.UI.createLabel({
-	center: {x:'40%', y:'80%'},
-	font: {fontSize:width / 22, fontFamily: 'Helvetica'}	,
+	center: {x:'43%', y:'80%'},
+	font: {fontSize:width / 22, fontFamily: 'Arial'}	,
 	text: 'Already a member? Please',
 	color:'red'
 });
 
 var lLogin = Titanium.UI.createLabel({
-	center: {x:'75%', y:'80%'},
-	font: {fontSize:width / 22, fontFamily: 'Helvetica', fontWeight: 'underline'}	,
+	center: {x:'78%', y:'80%'},
+	font: {fontSize:width / 22, fontFamily: 'Arial Rounded MT Bold'}	,
 	text: 'log in.',
 	color:'red'
 });
@@ -93,9 +96,15 @@ lLogin.addEventListener('click', function(e){
 	
 	var LoginWindow = require('ui/common/Login'),
 		loginWin = new LoginWindow(L('login_title'));
-		// win = loginWin;
-		
-	loginWin.open({animated:true});
+			
+	if(osname == 'android'){
+		loginWin.open({animated:true});	
+	}else{
+
+		self.tabGroup.activeTab.open(loginWin,{animated:true});
+				
+	};		
+	
 	
 	// Ti.App.Device = {
 		// _windowLogin:win
@@ -105,7 +114,7 @@ lLogin.addEventListener('click', function(e){
 
 var lTerm = Titanium.UI.createLabel({
 	center: {x:'50%', y:'90%'},
-	font: {fontSize:width / 22, fontFamily: 'Helvetica', fontWeight: 'underline'}	,
+	font: {fontSize:width / 22, fontFamily: 'Arial'}	,
 	text: 'Terms of Use',
 	color:'red'
 });
@@ -148,12 +157,73 @@ bSignup.addEventListener('click',function(e){
 });
 
 
-bConnect.addEventListener('click',function(e){
-	Titanium.Facebook.authorize();
-});
+	
+	// Ti.Facebook.appid = '[209214782545635]';
+	
+	Titanium.Facebook.forceDialogAuth = 'false';
+	
+	var bCon = Titanium.UI.createButton({
+		backgroundImage:'/images/fb_connect.png',
+		center: {x:'50%', y:'66%'},
+		width:'80%',
+		height:'12%'
+	});
+	
+	bCon.addEventListener('click',function(e){
+			
+			var counter = 0;
+			
+			Ti.Facebook.appid = '314418145312548';
+			Ti.Facebook.permissions = ['publish_stream', 'read_stream', 'email'];
+			
+			// Titanium.Facebook.logout();
+			Titanium.Facebook.authorize();	
+			
+			
+			// capture
+			Titanium.Facebook.addEventListener('login', function(e){
+				 if (e.success) {
+		            Titanium.Facebook.requestWithGraphPath('me', {}, 'GET', function(e) {
+		                if (e.success) {
+		                   var data= JSON.parse(e.result);
+		                    // Ti.API.info("Name:"+data.name);
+		                    // Ti.API.info("email:"+data.email);
+		                    // Ti.API.info("facebook Id:"+data.id);   
+		                    
+		                    var data = [
+											{email:data.email}
+										];
+						
+							if (counter == 0){
+						    	var Http = require('ui/common/HTTPClient'),
+									http = new Http('Signup_Facebook', data);
+				             	
+				             	// alert('Masuk Counter : ' + counter);
+// 								
+								counter = counter + 1;	
+				                
+				            }
+		                    
+		                } else if (e.error) {
+		                    alert(e.error);
+		                } else {
+		                    alert('Unknown response.');
+		                }
+		            });// request graph
+		            
+		            
+		         } else if (e.error) {
+		        	alert(e.error);
+		   		 } else if (e.cancelled) {
+		        	// alert("Cancelled");
+		       	 }	
+			});
+	
+	});
+	
 
 vBody.add(bSignup);
-vBody.add(bConnect);
+vBody.add(bCon);
 vBody.add(lAlready);
 vBody.add(lLogin);
 vBody.add(lTerm);

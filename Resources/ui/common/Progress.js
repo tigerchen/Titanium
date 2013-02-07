@@ -11,7 +11,7 @@ function ProgressWindow(title, image, restaurant_id, name, address, phone, offer
 var vBody = Titanium.UI.createView({
 	top:'10%',
 	left:'0%',
-	height:'80%',
+	height:'90%',
 	width:'100%',
 	backgroundImage:'/images/submit_background.png'
 });
@@ -96,7 +96,7 @@ var progressBar = Titanium.UI.createProgressBar({
 	max:1,
 	value:0,
 	style:Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
-	center:{x:'50%',y:'57%'},
+	center:{x:'50%',y:'63%'},
 	// message:'Uploading Image',
 	// font:{fontSize:12, fontWeight:'bold'},
 	color:'blue'
@@ -105,7 +105,9 @@ self.add(progressBar);
 progressBar.show();
 	
 
-self.addEventListener('focus', function(){
+// self.addEventListener('focus', function(){
+		
+		
 		// hostURL = "http://10.0.2.2:3000/api/v1/receipts?";
 		hostURL = "http://trelevant.herokuapp.com/api/v1/receipts?";
 											
@@ -154,8 +156,16 @@ self.addEventListener('focus', function(){
 							var SurveyWindow = require('ui/common/Survey'),
 								SurveyWin = new SurveyWindow('Survey', survey_id, receipt_id);
 				
-								SurveyWin.open({animated:true});
+								if(Ti.Platform.osname == 'android'){
+									
+									SurveyWin.open({animated:true});	
+									
+								}else{
 																
+									self.tabGroup.activeTab.open(SurveyWin,{animated:true});
+											
+								};
+																							
 							
           				break;
  
@@ -184,7 +194,7 @@ self.addEventListener('focus', function(){
 				loader.open('POST', urlString);
 				loader.send({image:image});
 		
-});
+// });
 
 
 return self;

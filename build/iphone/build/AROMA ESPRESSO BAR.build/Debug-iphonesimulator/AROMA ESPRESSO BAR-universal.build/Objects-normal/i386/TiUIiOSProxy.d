@@ -15,27 +15,11 @@ dependencies: \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/headers/TiCore/TiContextRefPrivate.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/KrollCallback.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/KrollObject.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUIiOSAdViewProxy.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUIViewProxy.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiViewProxy.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUIView.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiAnimation.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiPoint.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiDimension.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiColor.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/ListenerEntry.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiModule.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUtils.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiColor.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiDimension.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/WebFont.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiFile.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiBuffer.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiBlob.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/LayoutConstraint.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiGradient.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiRect.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/Webcolor.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/Ti3DMatrix.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUIiOSCoverFlowViewProxy.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUIiOSToolbarProxy.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiToolbar.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUIiOSTabbedBarProxy.h
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/Webcolor.h

@@ -1,14 +1,38 @@
 function geolocation() {
 	
 	Ti.Geolocation.preferredProvider = "gps";
-	Ti.Geolocation.purpose = "To obtain user location for tracking distance travelled.";
 	
-//	if (isIPhone3_2_Plus())
-//	{
-//		//NOTE: starting in 3.2+, you'll need to set the applications
-//		//purpose property for using Location services on iPhone
-//		Ti.Geolocation.purpose = "GPS demo";
-//	}
+	if(Ti.Platform.osname != 'android'){
+		
+		Ti.include("ui/common/version.js");
+			
+		// Ti.Geolocation.purpose = "To obtain user location for tracking distance travelled.";
+		if (isIPhone3_2_Plus())
+		{
+			//NOTE: starting in 3.2+, you'll need to set the applications
+			//purpose property for using Location services on iPhone
+			Ti.Geolocation.purpose = "GPS Aroma";
+		}
+		
+	}else{
+		gpsProvider = Ti.Geolocation.Android.createLocationProvider({
+		    name: Ti.Geolocation.PROVIDER_GPS,
+		    minUpdateTime: 60, 
+		    minUpdateDistance: 100
+		});
+		Ti.Geolocation.Android.addLocationProvider(gpsProvider);
+		
+		var gpsRule = Ti.Geolocation.Android.createLocationRule({
+		    provider: Ti.Geolocation.PROVIDER_GPS,
+		    // Updates should be accurate to 100m
+		    accuracy: 100,
+		    // Updates should be no older than 5m
+		    maxAge: 300000,
+		    // But  no more frequent than once per 10 seconds
+		    minAge: 10000
+		});
+		Ti.Geolocation.Android.addLocationRule(gpsRule);
+	}
 	
 	function translateErrorCode(code) {
 		if (code == null) {
@@ -46,29 +70,32 @@ function geolocation() {
 	}
 	else
 	{
-		
-//			var authorization = Titanium.Geolocation.locationServicesAuthorization;
-//			Ti.API.info('Authorization: '+authorization);
-//			if (authorization == Titanium.Geolocation.AUTHORIZATION_DENIED) {
-//				Ti.UI.createAlertDialog({
-//					title:'Aroma',
-//					message:'You have disallowed Titanium from running geolocation services.'
-//				}).show();
-//			}
-//			else if (authorization == Titanium.Geolocation.AUTHORIZATION_RESTRICTED) {
-//				Ti.UI.createAlertDialog({
-//					title:'Aroma',
-//					message:'Your system has disallowed Titanium from running geolocation services.'
-//				}).show();
-//			}
-		
+			
+			if(Ti.Platform.osname != 'android'){
+				
+				var authorization = Titanium.Geolocation.locationServicesAuthorization;
+				// Ti.API.info('Authorization: '+authorization);
+				if (authorization == Titanium.Geolocation.AUTHORIZATION_DENIED) {
+					Ti.UI.createAlertDialog({
+						title:'Aroma',
+						message:'You have denied Titanium from running geolocation services.'
+					}).show();
+				}
+				else if (authorization == Titanium.Geolocation.AUTHORIZATION_RESTRICTED) {
+					Ti.UI.createAlertDialog({
+						title:'Aroma',
+						message:'Your system has restricted Titanium from running geolocation services.'
+					}).show();
+				}
+				
+			}
 	
 				
 		//
 		// IF WE HAVE COMPASS GET THE HEADING
 		//
-		if (Titanium.Geolocation.hasCompass)
-		{
+		// if (Titanium.Geolocation.hasCompass)
+		// {
 				
 			//
 			//  TURN OFF ANNOYING COMPASS INTERFERENCE MESSAGE
@@ -119,7 +146,7 @@ function geolocation() {
 				var speed = e.coords.speed;
 				var timestamp = e.coords.timestamp;
 				var altitudeAccuracy = e.coords.altitudeAccuracy;
-				Ti.API.info('speed ' + speed);
+				// Ti.API.info('speed ' + speed);
 				
 //				currentLocation.text = 'long:' + longitude + ' lat: ' + latitude;
 				
@@ -131,13 +158,31 @@ function geolocation() {
 				// alert('longitude = ' + Ti.App.Location._longitude);
 				// alert('latitude = ' + Ti.App.Location._latitude);
 				
-				Titanium.API.info('geo - current location: ' + new Date(timestamp) + ' long ' + longitude + ' lat ' + latitude + ' accuracy ' + accuracy);
+				// Titanium.API.info('geo - current location: ' + new Date(timestamp) + ' long ' + longitude + ' lat ' + latitude + ' accuracy ' + accuracy);
 			});
 			
-	
+		//
+		// EVENT LISTENER FOR GEO EVENTS - THIS WILL FIRE REPEATEDLY (BASED ON DISTANCE FILTER)
+		//
+		var locationCallback = function(e)
+		{
+				var longitude = e.coords.longitude;
+				var latitude = e.coords.latitude;
+				var altitude = e.coords.altitude;
+				var heading = e.coords.heading;
+				var accuracy = e.coords.accuracy;
+				var speed = e.coords.speed;
+				var timestamp = e.coords.timestamp;
+				var altitudeAccuracy = e.coords.altitudeAccuracy;
+				// Ti.API.info('speed ' + speed);
+				
+				Ti.App.Location = {
+						_latitude: latitude,
+						_longitude:longitude
+				};
 		
-
 		};
+	  // };
 	};
 };
 

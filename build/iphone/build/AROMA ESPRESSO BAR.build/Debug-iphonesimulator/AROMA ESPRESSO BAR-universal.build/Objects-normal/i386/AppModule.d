@@ -45,6 +45,4 @@ dependencies: \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiTab.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiTabGroup.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUIWindow.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiViewController.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiAppiOSProxy.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiAppiOSBackgroundServiceProxy.h
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiViewController.h
