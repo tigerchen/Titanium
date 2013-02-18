@@ -1,7 +1,7 @@
 function GetPasswordWindow(title) {
 	
 	// Ti.include('ui/common/globalVariabel.js');
-//	Ti.include('globalVariabel.js');
+	//	Ti.include('globalVariabel.js');
 	
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, 'cancel');

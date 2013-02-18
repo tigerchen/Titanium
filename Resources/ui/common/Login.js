@@ -1,8 +1,8 @@
-function LoginWindow(title) {
+function LoginWindow(title, signUpWin) {
 	
 	// Titanium.Facebook.logout();
 	
-	Ti.include('ui/common/globalVariabel.js');
+	// Ti.include('ui/common/globalVariabel.js');
 	// Ti.include('globalVariabel.js');
 	
 	var wSelf = require('ui/common/Window');
@@ -12,6 +12,15 @@ function LoginWindow(title) {
 		height = Ti.App.Device._height,
 		width = Ti.App.Device._width;
 
+	
+	if(Ti.Platform.osname == 'android'){
+		Ti.include('db.js');
+		var status = getLoginStatus();
+									
+	}else{
+		Ti.include('ui/common/db.js');
+		var status = getLoginStatus();
+	};
 
 //Body
 var vBody = Titanium.UI.createView({
@@ -47,27 +56,55 @@ var container = Titanium.UI.createView({
 	backgroundImage:'/images/formfield_2.png'
 });
 
-var tEmail = Titanium.UI.createTextField({
-	left:0,
-	top:0,
-	width:'100%',
-	height:'50%',
-	hintText:'Email',
-	paddingLeft: 10
-});	
-container.add(tEmail);
+if(Ti.Platform.osname == 'android'){
+		var tEmail = Titanium.UI.createTextField({
+			left:0,
+			top:0,
+			width:'100%',
+			height:'50%',
+			hintText:'Email',
+			paddingLeft: 10,
+			opacity: 0.0
+		});	
+		container.add(tEmail);
+		
+		var tPassword = Titanium.UI.createTextField({
+			left:0,
+			bottom:0,
+			width:'100%',
+			height:'50%',
+			hintText:'Password',
+			passwordMask: true,
+			paddingLeft: 10,
+			minimumFontSize: 6,
+			opacity: 0.0	
+		});	
+		container.add(tPassword);
+									
+}else{
+		var tEmail = Titanium.UI.createTextField({
+			left:0,
+			top:0,
+			width:'100%',
+			height:'50%',
+			hintText:'Email',
+			paddingLeft: 10
+		});	
+		container.add(tEmail);
+		
+		var tPassword = Titanium.UI.createTextField({
+			left:0,
+			bottom:0,
+			width:'100%',
+			height:'50%',
+			hintText:'Password',
+			passwordMask: true,
+			paddingLeft: 10,
+			minimumFontSize: 6	
+		});	
+		container.add(tPassword);
+};
 
-var tPassword = Titanium.UI.createTextField({
-	left:0,
-	bottom:0,
-	width:'100%',
-	height:'50%',
-	hintText:'Password',
-	passwordMask: true,
-	paddingLeft: 10,
-	minimumFontSize: 6	
-});	
-container.add(tPassword);
 vBody.add(container);
 
 var bLoggin = Titanium.UI.createButton({
@@ -94,7 +131,9 @@ bLoggin.addEventListener('click',function(e){
     	
     	var data = [
 			{email:tEmail.value},
-			{password:tPassword.value}
+			{password:tPassword.value},
+			{signUpWin:signUpWin},
+			{loginWin:self}
 		];
 		
 		// var actInd = Ti.UI.createActivityIndicator({
@@ -144,15 +183,14 @@ bLoggin.addEventListener('click',function(e){
 
 		
 	bConnect.addEventListener('click',function(e){
-			
-			// Titanium.Facebook.logout();
+
+		if(status == 'false'){
 			
 			var counter = 0;
 			
 			Ti.Facebook.appid = '314418145312548';
 			Ti.Facebook.permissions = ['publish_stream', 'read_stream', 'email'];
-			// var email = '';
-			
+
 			// Titanium.Facebook.forceDialogAuth = 'false';
 						
 			Titanium.Facebook.authorize();
@@ -168,27 +206,19 @@ bLoggin.addEventListener('click',function(e){
 		                   	var data = JSON.parse(e.result);
 		                    // Ti.API.info("Name:"+data.name);
 		                    // Ti.API.info("email:"+data.email);
-		                    // Ti.API.info("facebook Id:"+data.id);   
-							
-							// data_email = data.email;
-							
-							// Ti.App.Fb = {
-											// _email_user:data.email
-										// };
-																			                   
+		                    // Ti.API.info("facebook Id:"+data.id);   						
+							                   
 		                    var data = [
-											{email:data.email}
+											{email:data.email},
+											{signUpWin:signUpWin},
+											{loginWin:self}
 										];
 														
 							
 							if (counter == 0){
-								// var Http = require('ui/common/HTTPClient'),
-								// http = new Http('Login_Facebook', data);
 								
 								var Http = require('ui/common/HTTPClient'),
 									http = new Http('Login_Facebook', data);
-								
-								// alert('Masuk Counter : ' + counter);
 								
 								counter = counter + 1;	
 							}
@@ -209,12 +239,11 @@ bLoggin.addEventListener('click',function(e){
 		       	 }
 			
 			});	
-			
-			// if (email != ''){
-				// Ti.API.info("email:"+email);
-			// }else{
-				// Ti.API.info("kosong");
-			// }			
+
+		}else{
+			alert('You have loged in');
+		};
+					
 	});
 	
 	

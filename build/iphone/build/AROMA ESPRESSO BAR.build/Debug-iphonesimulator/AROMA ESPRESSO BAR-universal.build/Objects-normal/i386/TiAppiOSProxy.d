@@ -15,6 +15,10 @@ dependencies: \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/headers/TiCore/TiContextRefPrivate.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/KrollCallback.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/KrollObject.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiAppiOSBackgroundServiceProxy.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/KrollBridge.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/Bridge.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiModule.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUtils.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiColor.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiDimension.h \
@@ -24,10 +28,7 @@ dependencies: \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiBlob.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiApp.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiHost.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/Bridge.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiStylesheet.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/KrollBridge.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiModule.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/XHRBridge.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiRootViewController.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiRootController.h \
@@ -43,4 +44,5 @@ dependencies: \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiTab.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiTabGroup.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiUIWindow.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiViewController.h
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiViewController.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiAppiOSLocalNotificationProxy.h

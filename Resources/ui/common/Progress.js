@@ -5,7 +5,9 @@ function ProgressWindow(title, image, restaurant_id, name, address, phone, offer
 		
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
-
+	
+	var status;	
+	var osname = Ti.App.Device._osname;
 		
 //Body
 var vBody = Titanium.UI.createView({
@@ -89,20 +91,35 @@ var lStreet = Titanium.UI.createLabel({
 	
 self.add(vBody);
 
-var progressBar = Titanium.UI.createProgressBar({
-	width:'53%',
-	height:'19%',
-	min:0,
-	max:1,
-	value:0,
-	style:Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
-	center:{x:'50%',y:'63%'},
-	// message:'Uploading Image',
-	// font:{fontSize:12, fontWeight:'bold'},
-	color:'blue'
-});
-self.add(progressBar);
-progressBar.show();
+if(osname == 'android'){
+	var progressBar = Titanium.UI.createProgressBar({
+		width:'53%',
+		height:'18%',
+		min:0,
+		max:1,
+		value:0,
+		style:Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
+		center:{x:'50%',y:'68%'},
+		// message:'Uploading Image',
+		// font:{fontSize:12, fontWeight:'bold'},
+		color:'blue'
+	});
+}else{
+	var progressBar = Titanium.UI.createProgressBar({
+		width:'53%',
+		height:'19%',
+		min:0,
+		max:1,
+		value:0,
+		style:Titanium.UI.iPhone.ProgressBarStyle.PLAIN,
+		center:{x:'50%',y:'63%'},
+		// message:'Uploading Image',
+		// font:{fontSize:12, fontWeight:'bold'},
+		color:'blue'
+	});
+}
+	self.add(progressBar);
+	progressBar.show();
 	
 
 // self.addEventListener('focus', function(){
@@ -114,10 +131,19 @@ progressBar.show();
 				var host = hostURL;
 				var urlString = host;
 				
+					if(Ti.Platform.osname == 'android'){
+						Ti.include('db.js');													
+					}else{
+						Ti.include('ui/common/db.js');
+					};
+				
+				var auth_token = getAuthToken();
+				// alert(auth_token);
+				
 				urlString += "appkey=" + Ti.App.Key._Appkey;
 				urlString += "&restaurant=" + restaurant_id;
 				urlString += "&offer=" + offer_id;
-				urlString += "&auth_token=" + Ti.App.User._auth_token;	
+				urlString += "&auth_token=" + auth_token;	
 												
 				var loader = Ti.Network.createHTTPClient();
 					
@@ -139,14 +165,8 @@ progressBar.show();
  
 					alert.addEventListener('click', function(e) {
     					Titanium.API.info('e = ' +  JSON.stringify(e));
- 
-       				//Clicked cancel, first check is for iphone, second for android
-       				// if (e.cancel === e.index || e.cancel === true) {
-          				// return;
-       				// }
- 
-        			//now you can use parameter e to switch/case
- 
+
+        			//now you can use parameter e to switch/case 
        				switch (e.index) {
           				case 0: 
 							// Ti.App.User = {
@@ -168,11 +188,7 @@ progressBar.show();
 																							
 							
           				break;
- 
-          				//This will never be reached, if you specified cancel for index 1
-          				// case 1: Titanium.API.info('Clicked button 1 (NO)');
-          				// break;
- 
+
           				default:
           				break;
  
@@ -189,6 +205,12 @@ progressBar.show();
 					progressBar.value = e.progress ;
 					// Ti.API.info('ONSENDSTREAM - PROGRESS: ' + e.progress);
 				};
+				
+				loader.onerror = function(e)
+				{				
+					Ti.API.info("Error during registration: "+e.error);  
+		     		alert(e.error);
+		     	}
 				
 				loader.setTimeout(20000);
 				loader.open('POST', urlString);

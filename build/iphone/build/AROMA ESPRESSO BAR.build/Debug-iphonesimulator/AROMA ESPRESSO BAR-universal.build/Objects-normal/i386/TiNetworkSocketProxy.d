@@ -15,4 +15,8 @@ dependencies: \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/headers/TiCore/TiContextRefPrivate.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/KrollCallback.h \
   /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/KrollObject.h \
-  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiNetworkSocketTCPProxy.h
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiNetworkSocketTCPProxy.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiStreamProxy.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/Tibuffer.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/TiBlob.h \
+  /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA\ ESPRESSO\ BAR/build/iphone/Classes/AsyncSocket.h

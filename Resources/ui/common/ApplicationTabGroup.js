@@ -1,11 +1,14 @@
 function ApplicationTabGroup() {
 	
 	var osname = Ti.App.Device._osname;
-	var status = Ti.App.User._loginStatus;
-	// var geolocation = require('ui/common/geolocation');
-  	// var geo = new geolocation();
 	
-	// Ti.API.info('OS nya = ' + osname);
+	if(osname == 'android'){
+		Ti.include('db.js');
+		var status = getLoginStatus();						
+	}else{
+		Ti.include('ui/common/db.js');
+		var status = getLoginStatus();
+	};
 	
 	//create module instance
 	var self = Ti.UI.createTabGroup(),
@@ -75,10 +78,48 @@ function ApplicationTabGroup() {
 	});	
 	infoWin.containingTab = infoTab;
 	self.addTab(infoTab);
-
+	
+	self.addEventListener('focus', function(e) {
+		// On iOS, the "More..." tab is actually a tab container, not a tab. When it is clicked, e.tab is undefined.
+		// if (!e.tab) {
+			// return;
+		// }			
+			// alert('index = ' + e.index + ', ' + e.previousIndex);
+			
+		Ti.App.Index = {
+		 	_index:e.index
+		};
+		
+		if(e.index == 0){
+			
+			// alert('masuk sono');
+			
+			// var GetLatestVersion = require('ui/common/GetLatestVersion');
+	  		// var getLatest = new GetLatestVersion();
+			
+			var geolocation = require('ui/common/geolocation');
+	  		var geo = new geolocation();	
+		
+		};
+		
+		if(e.index == 1){
+		 	self.activeTab.window.fireEvent('focus', {});
+		};
+		
+	}); 
+// 	
+	// self.addEventListener('blur', function(e) {
+		// // alert('index Blur = ' + e.index + ', ' + e.previousIndex);
+// 		
+		// if (e.previousIndex == 3){
+			// alert('masuk');
+			// infoWin.remove(infoWin.tableview);
+			// // infoWin.tableview.data = [];
+			// alert('masuk');
+		// };
+	// });
+	
 	self.setActiveTab(Ti.App.Index._index);
-	
-	
 	
 	return self;
 };

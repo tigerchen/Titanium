@@ -39,29 +39,7 @@ function Window(title, button) {
 			
 			bBack.addEventListener("click", function(e) { 
     			self.fireEvent('android:back');
-			});
-		
-		// if(title == 'Take Photo'){
-// 			
-// 			
-// 			
-			// bBack.addEventListener("click", function(e) { 
-    			// self.fireEvent('android:back');
-//     			
-    			// var TakePhotoWindow = require('ui/common/TakePhoto_ios'),
-					// TakePhotoWin = new TakePhotoWindow('Take Photo', id, name, address, phone, offer_id);
-// 			
-					// self.tabGroup.activeTab.open(TakePhotoWin,{animated:true});
-			// });
-		// }	
-	
-			// bBack.addEventListener("click", function(e) {  		
-//     		    		
-    		// var win = Ti.App.Device._window;
-			// win.close({animated:true});
-// 			
-			// });			
-						
+			});						
 
 		vHeader.add(bBack);		
 	
@@ -82,31 +60,14 @@ function Window(title, button) {
 		
 			bCancel.addEventListener("click", function() {
     			self.fireEvent('android:back');
-			});
-			
-		// bCancel.addEventListener("click", function() {
-    		// var win;
-//     		
-    		// if(title == 'Sign Up'){
-    			// win = Ti.App.Device._windowSignUp;   					
-    		// }else if(title == 'Login'){
-	    		// win = Ti.App.Device._windowLogin;
-    		// }else if(title == 'Retrieve Password'){
-	    		// win = Ti.App.Device._windowForgot;
-    		// }else{
-	    		// win = Ti.App.Device._window;    			
-    		// };
-//     		
-    		// win.close({animated:true});
-// 
-		// });
+			});			
 		
 		vHeader.add(bCancel);
 	
 	};
-	
-		
-		
+
+	// self.updateLayout({});
+					
 	return self;
 };
 

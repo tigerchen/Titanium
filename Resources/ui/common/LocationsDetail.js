@@ -7,9 +7,19 @@ function LocationsDetailWindow(title, id, name, address, phone, offer_id) {
 	var width = Ti.App.Device._width;
 	
 	var osname = Ti.App.Device._osname;
-	var status = Ti.App.User._loginStatus;
+	// var status = Ti.App.User._loginStatus;
 	
-	// alert('Offer Id = ' + offer_id);
+	
+	if(Ti.Platform.osname == 'android'){
+		Ti.include('db.js');
+		var status = getLoginStatus();
+									
+	}else{
+		Ti.include('ui/common/db.js');
+		var status = getLoginStatus();
+	};	
+	
+	// alert('Offer Id = ' + offer_id + '' + phone);
 	
 	//Body
 	var vBody = Titanium.UI.createView({

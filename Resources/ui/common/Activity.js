@@ -5,15 +5,24 @@ function ActivityWindow(title, points) {
 		
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
-
+	
+	if(Ti.Platform.osname == 'android'){
+		Ti.include('db.js');
+		var auth_token = getAuthToken();
+									
+	}else{
+		Ti.include('ui/common/db.js');
+		var auth_token = getAuthToken();
+	};
+	
 	var actInd = Ti.UI.createActivityIndicator({
 	 		width:100,
 			height:100,
 			message: 'loading...',
 			color: 'black',
 			top:'30%',
-			left:'55%',
-			style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+			left:'55%'
+			// style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
 	});
 
 //Body
@@ -65,13 +74,28 @@ self.addEventListener('focus',function(e){
 	var urlString = host;
 									
 	urlString += "appkey=" + Ti.App.Key._Appkey;
-	urlString += "&auth_token=" + Ti.App.User._auth_token;	
+	urlString += "&auth_token=" + auth_token;	
 								
 	var loader = Ti.Network.createHTTPClient();
 //	loader.setTimeout(60000);
 	
 	var data = []; //empty data array
-			
+		
+	if(Ti.Platform.osname == 'android'){
+		//create the table view
+		var tblRecipes = Titanium.UI.createTableView({
+			height: '80%',
+			width: '90%',
+			top: '14.5%',
+			left: '5%',
+			backgroundColor:'transparent',
+			borderRadius:5
+		});
+		vBody.add(tblRecipes);
+		
+		tblRecipes.separatorColor = 'white';
+									
+	}else{
 		//create the table view
 		var tblRecipes = Titanium.UI.createTableView({
 			height: '80%',
@@ -84,8 +108,9 @@ self.addEventListener('focus',function(e){
 			backgroundColor:'transparent',
 			borderRadius:5
 		});
-		vBody.add(tblRecipes);		
-		
+		vBody.add(tblRecipes);
+	};			
+				
 				
 	loader.onload = function(evt)
 	{
@@ -94,91 +119,96 @@ self.addEventListener('focus',function(e){
 		//create json object using the Json.parse function
 		var jsonObject = JSON.parse(this.responseText).receipts;
 		
-		for(var i = 0; i < jsonObject.length; i++){
+		// alert('length = ' + jsonObject.length);
 		
-			// alert('receipt = ' + jsonObject[i].last_transaction.receipt_date);
-			// alert(jsonObject[i].last_transaction.receipt_date);
-			
-			//create a table row
-		var row = Titanium.UI.createTableViewRow({
-				height: height / 12,
-				color:'white'
-										
-			});
-		
-					
-		//Reward Middle
-		var vPoints = Titanium.UI.createView({
-			height:'100%',
-			width:'100%',
-			backgroundImage:'/images/activity_mid.png'
-		});
+		if(jsonObject != null){
 				
-		var lReceipt = Titanium.UI.createLabel({
-			left:'5%',
-			top:'25%',
-			font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
-			text: jsonObject[i].last_transaction.receipt_date,
-			color:'gray'
-		});
-		vPoints.add(lReceipt);
-
-		var lPoint = Titanium.UI.createLabel({
-			right:'2%',
-			top:'25%',
-			font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
-			color:'gray'
-		});
-		vPoints.add(lPoint);
 		
-		var bInfo = Titanium.UI.createButton({
-			right:'2%',
-			top:'15%',
-			width:'8%',
-			height:'60%',
-			backgroundImage:'/images/activity_help.png'
-		});
+			for(var i = 0; i < jsonObject.length; i++){
+			
+					// alert('receipt = ' + jsonObject[i].last_transaction.receipt_date);
+					// alert(jsonObject[i].last_transaction.receipt_date);
+					
+					//create a table row
+				var row = Titanium.UI.createTableViewRow({
+						height: height / 12,
+						color:'white'
+												
+					});
+				
+							
+				//Reward Middle
+				var vPoints = Titanium.UI.createView({
+					height:row.height,
+					width: row.width,
+					backgroundImage:'/images/activity_mid.png'
+				});
 						
-		row.add(vPoints);
-		data.push(row);
+				var lReceipt = Titanium.UI.createLabel({
+					left:'5%',
+					top:'25%',
+					font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
+					text: jsonObject[i].last_transaction.receipt_date,
+					color:'gray'
+				});
+				vPoints.add(lReceipt);
 		
-		
-		if(jsonObject[i].last_transaction.status == 1){
-			lPoint.text = 'received';
-			lPoint.right = '15%';
+				var lPoint = Titanium.UI.createLabel({
+					right:'2%',
+					top:'25%',
+					font: {fontSize:width / 18, fontFamily: 'Helvetica'}	,
+					color:'gray'
+				});
+				vPoints.add(lPoint);
+				
+				var bInfo = Titanium.UI.createButton({
+					right:'2%',
+					top:'15%',
+					width:'8%',
+					height:'60%',
+					backgroundImage:'/images/activity_help.png'
+				});
+								
+				row.add(vPoints);
+				data.push(row);
+				
+				
+				if(jsonObject[i].last_transaction.status == 1){
+					lPoint.text = 'received';
+					lPoint.right = '15%';
+					
+					bInfo.addEventListener('click', function(){
+						alert('You Receipt was received. please wait for a moment for checking it.');
+					});		
+					vPoints.add(bInfo);			
+				}else if(jsonObject[i].last_transaction.status == 2){
+					lPoint.text = 'illegible';
+					lPoint.right = '15%';
+					
+					bInfo.addEventListener('click', function(){
+						alert('You Receipt was illegible. please send it again.');
+					});			
+					vPoints.add(bInfo);
+				}else if(jsonObject[i].last_transaction.status == 3){
+					lPoint.text = parseInt(jsonObject[i].last_transaction.total_points_earned);
+				}else if(jsonObject[i].last_transaction.status == 4){
+					lPoint.text = 'rejected';
+					lPoint.right = '15%';
+					
+					bInfo.addEventListener('click', function(){
+						alert('You Receipt rejected received. please contact support for more details.');
+					});
+					vPoints.add(bInfo);
+				}
+				
+				if(i == jsonObject.length - 1){
+					vPoints.backgroundImage = '/images/activity_bottom.png';
+				}
+				
 			
-			bInfo.addEventListener('click', function(){
-				alert('You Receipt was received. please wait for a moment for checking it.');
-			});		
-			vPoints.add(bInfo);			
-		}else if(jsonObject[i].last_transaction.status == 2){
-			lPoint.text = 'illegible';
-			lPoint.right = '15%';
 			
-			bInfo.addEventListener('click', function(){
-				alert('You Receipt was illegible. please send it again.');
-			});			
-			vPoints.add(bInfo);
-		}else if(jsonObject[i].last_transaction.status == 3){
-			lPoint.text = parseInt(jsonObject[i].last_transaction.total_points_earned);
-		}else if(jsonObject[i].last_transaction.status == 4){
-			lPoint.text = 'rejected';
-			lPoint.right = '15%';
-			
-			bInfo.addEventListener('click', function(){
-				alert('You Receipt rejected received. please contact support for more details.');
-			});
-			vPoints.add(bInfo);
-		}
-		
-		if(i == jsonObject.length - 1){
-			vPoints.backgroundImage = '/images/activity_bottom.png';
-		}
-		
-		
-		
+			};
 		};
-		
 		actInd.hide();
 		
 		tblRecipes.data = data;

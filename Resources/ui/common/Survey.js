@@ -28,15 +28,30 @@ function SurveyWindow(title, survey_id, receipt_id) {
 			backgroundColor:'white'
 	});
 	
-//Body
-var vBody = Ti.UI.createView({
-	width: '95%',
-	height: '120%',
-	left: '0%',
-	top: '0%'
-});
+if(Ti.Platform.osname == 'android'){
+
+	//Body
+	var vBody = Ti.UI.createView({
+		width: '95%',
+		height: '100%',
+		left: '0%',
+		top: '0%'
+	});
+	scrollView.add(vBody);	
+
+}else{
 	
-scrollView.add(vBody);
+	//Body
+	var vBody = Ti.UI.createView({
+		width: '95%',
+		height: '120%',
+		left: '0%',
+		top: '0%'
+	});
+	scrollView.add(vBody);
+	
+}	
+
 self.add(scrollView);
 
 var lTell = Titanium.UI.createLabel({
@@ -150,10 +165,21 @@ functionLabel = function(name, y, text) {
 				var host = hostURL;
 				var urlString = host;
 				
+				
+				if(Ti.Platform.osname == 'android'){
+					Ti.include('db.js');													
+				}else{
+					Ti.include('ui/common/db.js');
+				};
+				
+				var auth_token = getAuthToken();
+				// alert("token = " + auth_token);
+				
+				
 				// urlString += "id=" + survey_id;
 				urlString += "?appkey=" + Ti.App.Key._Appkey;
-				urlString += "&auth_token=" + Ti.App.User._auth_token;
-				// urlString += "&auth_token=" + auth_token;	
+				// urlString += "&auth_token=" + Ti.App.User._auth_token;
+				urlString += "&auth_token=" + auth_token;	
 												
 				var loader = Ti.Network.createHTTPClient();
 					
@@ -195,12 +221,22 @@ functionLabel = function(name, y, text) {
 							});
 							vBody.add(vComment);											
 							
-							var comment = Titanium.UI.createTextArea({								
-								width:'99%',
-								height:'95%',
-								center:{x:'50%', y:'50%'}
-							});
-							vComment.add(comment);
+							if(Ti.Platform.osname == 'android'){
+								var comment = Titanium.UI.createTextArea({								
+									width:'99%',
+									height:'95%',
+									center:{x:'50%', y:'50%'},
+									opacity: 0.0
+								});
+								vComment.add(comment);
+							}else{
+								var comment = Titanium.UI.createTextArea({								
+									width:'99%',
+									height:'95%',
+									center:{x:'50%', y:'50%'}
+								});
+								vComment.add(comment);
+							}
 							
 							var bSend = Titanium.UI.createButton({
 								backgroundImage: '/images/send.png',
@@ -218,6 +254,8 @@ functionLabel = function(name, y, text) {
 								var host = hostURL;
 								var urlString = host;
 								
+								var auth_token = getAuthToken();
+								
 								var answers = {
 												answers : 	{1: answer1,
 															 2: answer2,
@@ -227,8 +265,8 @@ functionLabel = function(name, y, text) {
 								
 								// urlString += "id=" + survey_id;
 								urlString += "?appkey=" + Ti.App.Key._Appkey;
-								urlString += "&auth_token=" + Ti.App.User._auth_token;
-								// urlString += "&auth_token=" + auth_token;
+								// urlString += "&auth_token=" + Ti.App.User._auth_token;
+								urlString += "&auth_token=" + auth_token;
 								urlString += "&receiptId=" + receipt_id;
 								// urlString += "&answers=" + answers;
 																	
@@ -239,7 +277,7 @@ functionLabel = function(name, y, text) {
 								{
 									//create json object using the Json.parse function
 									jsonObject = JSON.parse(this.responseText);
-									alert(jsonObject.notice);
+									// alert(jsonObject.notice);
 									alert(jsonObject.message);
 								};
 								

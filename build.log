@@ -1,21 +1,16 @@
 Logfile initialized
 [INFO] logfile = /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build.log
-[DEBUG] /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/android/builder.py simulator AROMA ESPRESSO BAR /Users/pushjaw/Documents/android-sdk /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR com.pushjaw.aroma 19 WVGA854 
+[DEBUG] /Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/android/builder.py simulator AROMA ESPRESSO BAR /Users/pushjaw/Documents/android-sdk /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR com.pushjaw.aroma 19 WXGA720 
 [INFO] Building AROMA ESPRESSO BAR for Android ... one moment
 [INFO] Titanium SDK version: 2.1.4 (11/09/12 12:46 51f2c64)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 15 seconds)
-[DEBUG] waited 15.379447 seconds on emulator to get ready
-[INFO] Waiting for the Android Emulator to become available
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.020745 seconds on emulator to get ready
 [DEBUG] com.pushjaw.aroma installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/HTTPClient.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/HTTPClient.js
-[TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/Login.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/Login.js
+[TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/Survey.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/Survey.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] found special platform files dir = /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/platform/android
@@ -155,6 +150,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/TakePhoto_ios.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Wall.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Window.js
+[DEBUG] from resource zip => assets/Resources/ui/common/db.js
 [DEBUG] from resource zip => assets/Resources/ui/common/geolocation.js
 [DEBUG] from resource zip => assets/Resources/ui/common/globalVariabel.js
 [DEBUG] from resource zip => assets/Resources/ui/common/version.js
@@ -222,7 +218,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.020699 seconds on emulator to get ready
+[DEBUG] waited 0.021098 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... AROMA ESPRESSO BAR
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.pushjaw.aroma/.AromaEspressoBarActivity }

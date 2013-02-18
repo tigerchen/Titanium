@@ -5,8 +5,9 @@ function InfoWindow(title) {
 	
 	var _height = Ti.App.Device._height;
 	var _width = Ti.App.Device._width;
-	var status = Ti.App.User._loginStatus;	
-
+	var status;	
+	var osname = Ti.App.Device._osname;	
+		
 	//create module instance
 	var AboutWindow = require('ui/common/About'),
 		HowItWorksWindow = require('ui/common/HowItWorks'),
@@ -37,34 +38,78 @@ function InfoWindow(title) {
 	});
 	self.add(vBody);	
 	
-	// create table view data object
-	var data = [
-		{title:'About Aroma', hasChild:true, backgroundImage: '/images/formfield_top.png'},
-		{title:'How to get rewards', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
-		{title:'FAQ', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
-		{title:'My Profile', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
-		{title:'Promo code', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
-		{title:'Contact Us', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
-		{title:'Login', backgroundImage: '/images/formfield_bottom.png'}
-	];
-	
-	if(status == 'true'){
-		data[6].title = 'Logout';
-	}
+	if(osname == 'android'){
+		Ti.include('db.js');	
 		
-	// create table view
-	for (var i = 0; i < data.length; i++ ) { data[i].color = 'gray'; data[i].font = {fontWeight:'bold'}};
-	var tableview = Titanium.UI.createTableView({
-		data:data,
-		rowHeight: _height / 10,
-		style:Titanium.UI.iPhone.TableViewStyle.PLAIN,
-    	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,	
-		backgroundColor:'transparent',
-		top:'12%', 
-    	width:'90%',
-    	height:'90%'    		
-	});
-
+		var tableview = Titanium.UI.createTableView({
+			// data:data,
+			rowHeight: _height / 10,
+			backgroundColor:'transparent',
+			top:'12%', 
+	    	width:'90%',
+	    	height:'90%'    		
+		});
+		
+		tableview.separatorColor = 'white';
+							
+	}else{
+		Ti.include('ui/common/db.js');
+		
+		var tableview = Titanium.UI.createTableView({
+			// data:data,
+			rowHeight: _height / 10,
+			style:Titanium.UI.iPhone.TableViewStyle.PLAIN,
+	    	// separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,	
+			backgroundColor:'transparent',
+			top:'12%', 
+	    	width:'90%',
+	    	height:'90%'    		
+		});
+		
+		tableview.separatorColor = 'white';
+	};
+		
+	
+	// self.addEventListener('focus', function(){
+		
+		status = getLoginStatus();			
+		
+		if(status == 'true'){
+				var data = [
+					{title:'About Aroma', hasChild:true, backgroundImage: '/images/formfield_top.png'},
+					{title:'How to get rewards', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'FAQ', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'My Profile', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'Promo code', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'Contact Us', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'Logout', backgroundImage: '/images/formfield_bottom.png'}
+				];
+				
+				// create table view
+				for (var i = 0; i < data.length; i++ ) { data[i].color = 'gray'; data[i].font = {fontWeight:'bold'}};
+				
+				tableview.data = data;
+		}else{
+			// create table view data object
+				var data = [
+					{title:'About Aroma', hasChild:true, backgroundImage: '/images/formfield_top.png'},
+					{title:'How to get rewards', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'FAQ', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'My Profile', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'Promo code', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'Contact Us', hasChild:true, backgroundImage: '/images/formfield_middle.png'},
+					{title:'Login', backgroundImage: '/images/formfield_bottom.png'}
+				];
+		
+				
+				// create table view
+				for (var i = 0; i < data.length; i++ ) { data[i].color = 'gray'; data[i].font = {fontWeight:'bold'}};
+				
+				tableview.data = data;
+		};		
+		
+	// });
+	
 	// create table view event listener
 	tableview.addEventListener('click', function(e)
 	{
@@ -104,46 +149,37 @@ function InfoWindow(title) {
 				
 			}else if (e.index == 5){
 				
-				win = Ti.include('ui/common/ContactUs.js');
+					if(Ti.Platform.osname == 'android'){
+						win = Ti.include('ContactUs.js');							
+					}else{
+						win = Ti.include('ui/common/ContactUs.js');
+					};				
 			
-			}else{
-				if(status == 'false'){
+			}else if (e.index == 6){
+				if(status == 'true'){
 		
-		 			win = SignupWin;
-		
-				}else{									
-    				var Http = require('ui/common/HTTPClient'),
+					var Http = require('ui/common/HTTPClient'),
 						http = new Http('Logout', '');
 					
-					data[6].title = 'Login';
+					return self;						 				
 					
-					return self;
-										
+				}else{									
+    				
+    				win = SignupWin;											
 				}
 			
 			};
 		
 		if(e.index != 5){
-			self.containingTab.open(win,{animated:true});	
+			self.containingTab.open(win,{animated:true});
+
 		};	
-		
-		// if(win == SignupWin && status == 'false'){
-			// Ti.App.Device = {
-				// _windowSignUp:win
-			// };
-// 		
-		// }else{
-			// Ti.App.Device = {
-				// _window:win
-			// };
-		// };		
 		
 	});
 	
-	// add table view to the window
-	self.add(tableview);
-		
 	
+	// add table view to the window
+		self.add(tableview);
 	
 	return self;
 };

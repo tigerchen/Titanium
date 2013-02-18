@@ -26,8 +26,18 @@ function LocationsWindow(title) {
 		width:'100%',
 		backgroundColor:'white'
 	});
-
 	
+	//create the table view
+	var tblRecipes = Titanium.UI.createTableView({
+		height: '100%',
+		width: '95%',
+		center:{x:'50%', y:'50%'},
+		style:Titanium.UI.iPhone.TableViewStyle.GROUPEDPLAIN,
+	   	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,
+		backgroundColor:'transparent',
+		hasChild:true
+	});	
+			
 	self.addEventListener('focus', function(e){
 						
 		// alert('Latitude = ' + Ti.App.Location._latitude);
@@ -54,17 +64,7 @@ function LocationsWindow(title) {
 			phone_number = [],
 			offer = [];
 			// offer2 = [];
-		
-		//create the table view
-		var tblRecipes = Titanium.UI.createTableView({
-			height: '100%',
-			width: '95%',
-			center:{x:'50%', y:'50%'},
-			style:Titanium.UI.iPhone.TableViewStyle.GROUPEDPLAIN,
-    		separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,
-			backgroundColor:'transparent',
-			hasChild:true
-		});
+					
 		vBody.add(tblRecipes);
 
 		//this method will process the remote data
@@ -147,16 +147,7 @@ function LocationsWindow(title) {
 				
 				
 						// }; //end for loop
-					
-						tblRecipes.addEventListener('click', function(e)
-						{
-							var LocationsDetailWindow = require('ui/common/LocationsDetail'),
-							locationsDetailWin = new LocationsDetailWindow(L('locations_title'), e.rowData.id, e.rowData.name, e.rowData.address, e.rowData.phone_number, e.rowData.offer);
-							
-							self.containingTab.open(locationsDetailWin,{animated:true});
-											
-						});
-					
+										
 					//set the data property of the tableView to data[] object
 					tblRecipes.data = data;
 					
@@ -169,6 +160,19 @@ function LocationsWindow(title) {
 		loader.send();
 	
 	
+	});
+	
+	tblRecipes.addEventListener('click', function(e)
+	{
+		var LocationsDetailWindow = require('ui/common/LocationsDetail'),
+			locationsDetailWin = new LocationsDetailWindow(L('locations_title'), e.rowData.id, e.rowData.name, e.rowData.address, e.rowData.phone_number, e.rowData.offer);
+							
+			self.containingTab.open(locationsDetailWin,{animated:true});
+											
+	});
+	
+	self.addEventListener('blur', function(e){
+		tblRecipes.data = null;
 	});
 		
 	// self.add(vHeader);

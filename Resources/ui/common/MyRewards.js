@@ -3,6 +3,14 @@ function MyRewardsWindow(title) {
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, '');
 	
+	 // var self = Titanium.UI.createWindow({
+		 // title:title,
+		 // backgroundColor:'black',
+		 // navBarHidden:true,
+		 // exitOnClose:false
+		 // // modal:true
+	 // });
+		
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
 	
@@ -12,29 +20,64 @@ function MyRewardsWindow(title) {
 				message: 'loading...',
 				color: 'black',
 				top:'50%',
-				left:'55%',
-				style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+				left:'55%'
+				// style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
 	});
-	
 		
 	// var auth_token = 'uJqXgVM7g5ZfFpait3pj';		
 	
 	var counter = 0;
 	// var count = 0;
+	
 		
-	//create the table view
-	var tblReward = Titanium.UI.createTableView({
-		height: '90%',
-		width: '90%',
-		top: '50%',
-		left: '5%',
-		// rowHeight: height / 16,
-		style:Titanium.UI.iPhone.TableViewStyle.PLAIN,
-	   	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,
-		backgroundColor:'transparent',
-		borderRadius:5
+	if(Ti.Platform.osname == 'android'){
+		var tblReward = Titanium.UI.createTableView({
+			height: '90%',
+			width: '90%',
+			top: '50%',
+			left: '5%',
+			backgroundColor:'transparent',
+			borderRadius:5
+		});
+		
+		tblReward.separatorColor = 'black';
+		
+		Ti.include('db.js');									
+	}else{
+		var tblReward = Titanium.UI.createTableView({
+			height: '90%',
+			width: '90%',
+			top: '50%',
+			left: '5%',
+			style: Titanium.UI.iPhone.TableViewStyle.PLAIN,
+			separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE,
+			backgroundColor:'transparent',
+			borderRadius:5
+		});
+				
+		Ti.include('ui/common/db.js');
+	};	
+	
+	var auth_token = getAuthToken();
+		
+	//Body
+	var vBody = Titanium.UI.createView({
+	    top: '10%',
+		left: '0%',
+		height: '25%',
+		width: '100%',
+	 	backgroundColor: 'white'
 	});
 	
+	var lPoint = Titanium.UI.createLabel({
+			top:'20%',
+			right:'7%',
+			font: {fontSize:width / 18, fontFamily: 'Arial Rounded MT Bold'}	,
+			// text: jsonObject.balance.points,
+			color:'gray'
+		});
+							
+							
 				self.addEventListener('focus', function(e) {
 																		
 						actInd.show();
@@ -48,10 +91,10 @@ function MyRewardsWindow(title) {
 						
 						// urlString += "id=" + survey_id;
 						urlString += "?appkey=" + Ti.App.Key._Appkey;
-						urlString += "&auth_token=" + Ti.App.User._auth_token;
-						// urlString += "&auth_token=" + auth_token;	
+						// urlString += "&auth_token=" + Ti.App.User._auth_token;
+						urlString += "&auth_token=" + auth_token;	
 														
-						var loader = Ti.Network.createHTTPClient();
+						var loaderRewards = Ti.Network.createHTTPClient();
 						
 						var data = []; //empty data array
 			
@@ -59,7 +102,7 @@ function MyRewardsWindow(title) {
 						self.add(tblReward);
 						
 					
-						loader.onload = function(evt)
+						loaderRewards.onload = function(evt)
 						{
 																		
 							//create json object using the Json.parse function
@@ -69,13 +112,10 @@ function MyRewardsWindow(title) {
 									_points: jsonObject.balance.points
 							};
 												
-							var lPoint = Titanium.UI.createLabel({
-								top:'20%',
-								right:'7%',
-								font: {fontSize:width / 18, fontFamily: 'Arial Rounded MT Bold'}	,
-								text: jsonObject.balance.points,
-								color:'gray'
-							});
+														
+							lPoint.text = null;
+							lPoint.text = jsonObject.balance.points;	
+							
 							vBody.add(lPoint);
 							
 							jsonRewards = JSON.parse(this.responseText).rewards;
@@ -83,7 +123,7 @@ function MyRewardsWindow(title) {
 								name = [],
 								points = [],
 								POSCode = [];
-							var y = 55;
+							// var y = 55;
 													
 							for (var i = 0; i < jsonRewards.length; i++){
 								
@@ -100,12 +140,18 @@ function MyRewardsWindow(title) {
 									name:name[i],
 									POSCode:POSCode[i]						
 								});
-																				
+								
+								
+								var h = (row.height * 90) / 100;
+										
 								var vOffer = Titanium.UI.createView({
-									center: {x:'50%', y:y + '%'},
-									height: '100%',
-									width: '100%',
+									// center: {x:'50%', y:y + '%'},
+									// center: {x:'50%', y:y},
+									left: 0,
+									top: 0,
 									backgroundImage: '/images/reward_unavailable.png',
+									height: h,
+									width: row.width,
 									id:id[i]									
 								});
 																		
@@ -130,17 +176,10 @@ function MyRewardsWindow(title) {
 								});
 								vOffer.add(iOffer);
 												
-								// var lCount = Titanium.UI.createLabel({
-									// right: 50,
-									// font: {fontSize:width / 20, fontFamily: 'Helvetica'}	,
-									// text: count ,
-									// color: 'white'
-								// });
-								// vOffer.add(lCount);
 																
-								y = y + 10;
+								// y = y + 10;	
 								
-								// alert('length = ' + data.length);
+								// y = y + 5;		
 														
 								row.add(vOffer);
 																				
@@ -156,14 +195,18 @@ function MyRewardsWindow(title) {
 							counter = 1;
 							// count = count + 1;
 						};	
-							
-															
-							
-							
 						
-						loader.open('GET', urlString);
-						loader.setRequestHeader('Content-Type', 'form-data');
-						loader.send();	
+							
+						loaderRewards.onerror = function(e)
+						{				
+							Ti.API.info("Error during registration: "+e.error);  
+		     				alert(e.error);
+		     				actInd.hide();
+		     			}					
+						
+						loaderRewards.open('GET', urlString);
+						loaderRewards.setRequestHeader('Content-Type', 'form-data');
+						loaderRewards.send();	
 			
 			});
 			
@@ -183,8 +226,8 @@ function MyRewardsWindow(title) {
 														
 										// urlString += "id=" + survey_id;
 										urlString += "?appkey=" + Ti.App.Key._Appkey;
-										urlString += "&auth_token=" + Ti.App.User._auth_token;
-										// urlString += "&auth_token=" + auth_token;	
+										// urlString += "&auth_token=" + Ti.App.User._auth_token;
+										urlString += "&auth_token=" + auth_token;	
 										urlString += "&lat=" + Ti.App.Location._latitude;
 										urlString += "&lng=" + Ti.App.Location._longitude;
 																			
@@ -195,22 +238,19 @@ function MyRewardsWindow(title) {
 														loader.onload = function(evt)
 														{
 															
-															// alert('id3 = ' + e.rowData.id);
-																										
 															//create json object using the Json.parse function
 															jsonObject = JSON.parse(this.responseText).restaurants[0].id;
-															jsonAddress = JSON.parse(this.responseText).restaurants[0].address;
-															
-															// Ti.App.Restaurant = {
-																// _restaurant_id:jsonObject
-															// };
-															
-															// alert(jsonObject);
+															jsonAddress = JSON.parse(this.responseText).restaurants[0].address;													
 															
 															var ClaimWindow = require('ui/common/Claim'),
 															ClaimWin = new ClaimWindow('Claim Rewards', e.rowData.id, e.rowData.name, jsonObject, e.rowData.POSCode, jsonAddress);
 										
-															self.tabGroup.activeTab.open(ClaimWin,{animated:true});
+															if(Ti.Platform.osname == 'android'){
+																ClaimWin.open({animated:true});	
+															}else{
+																self.tabGroup.activeTab.open(ClaimWin,{animated:true});	
+															}
+															
 															
 															if(counter == 1){
 								
@@ -232,15 +272,7 @@ function MyRewardsWindow(title) {
 																			
 							});
 			
-			//Body
-			var vBody = Titanium.UI.createView({
-			    top: '10%',
-				left: '0%',
-				height: '25%',
-				width: '100%',
-				 backgroundColor: 'white'
-			});
-		
+					
 			var iRewards = Titanium.UI.createImageView({
 				width: '90%',
 				height: '80%',

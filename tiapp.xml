@@ -24,6 +24,7 @@
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <guid>67758544-8202-4f0f-a75c-5cb5f99051b5</guid>
+    <property name="ti.ui.defaultunit">system</property>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
@@ -38,14 +39,6 @@
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <tool-api-level>8</tool-api-level>
         <manifest android:versionCode="1" android:versionName="1.0" package="com.pushjaw.aroma">            
-            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-            <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
-            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-            <uses-permission android:name="android.permission.INTERNET"/>
-            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
             <supports-screens android:anyDensity="false"/>
             <uses-sdk android:minSdkVersion="8"/>
         </manifest>

@@ -52,22 +52,52 @@ var bMark = Titanium.UI.createButton({
 vBody.add(bMark);
 
 bMark.addEventListener('click', function(e){
-	var alert = Titanium.UI.createAlertDialog({
+ 	fClaim();		
+});
+
+
+var lStaff = Titanium.UI.createLabel({
+	left:'23%',
+	top:'50%',
+	font: {fontSize:width / 22, fontFamily: 'Helvetica'}	,
+	text: 'Staff: Use code ' + POSCode,
+	height:'18%',
+	width:'54%',
+	textAlign: 'center',
+	color:'white'
+});
+vBody.add(lStaff);
+
+lStaff.addEventListener('click', function(e){
+ 	fClaim();		
+});
+
+var lReward = Titanium.UI.createLabel({
+	center: {x:'50%', y:'77%'},
+	font: {fontSize:width / 32, fontFamily: 'Arial Rounded MT Bold'}	,
+	text: 'TO CLAIM, PLEASE PRESENT\nTHIS TO YOUR SERVER\nAT TIME OF PURCHASE',
+	textAlign: 'center',
+	color:'black'
+});
+vBody.add(lReward);
+
+
+self.add(vBody);
+
+
+
+var fClaim = function(){
+	
+		var alertClaim = Titanium.UI.createAlertDialog({
  						// title: 'Information',
     					message: 'Use this reward?',
     					buttonNames: ['Cancel','Confirm']
 					});
-//  
-					alert.addEventListener('click', function(e) {
+ 
+					alertClaim.addEventListener('click', function(e) {
     					Titanium.API.info('e = ' +  JSON.stringify(e));
  
-       				//Clicked cancel, first check is for iphone, second for android
-       				// if (e.cancel === e.index || e.cancel === true) {
-          				// return;
-       				// }
- 
-        			//now you can use parameter e to switch/case
- 
+        			//now you can use parameter e to switch/case 
        				switch (e.index) {
           				case 0: 
 							
@@ -87,6 +117,8 @@ bMark.addEventListener('click', function(e){
 								
 								bMark.backgroundImage = '/images/reward_used.png';
 								bMark.touchEnabled = false;
+								
+								lStaff.touchEnabled = false;
           				break;
  
           				default:
@@ -95,34 +127,9 @@ bMark.addEventListener('click', function(e){
       				}
  
 					});
-//  
-					alert.show(); 				
-});
-
-
-var lStaff = Titanium.UI.createLabel({
-	left:'23%',
-	top:'50%',
-	font: {fontSize:width / 22, fontFamily: 'Helvetica'}	,
-	text: 'Staff: Use code ' + POSCode,
-	height:'18%',
-	width:'54%',
-	textAlign: 'center',
-	color:'white'
-});
-vBody.add(lStaff);
-
-var lReward = Titanium.UI.createLabel({
-	center: {x:'50%', y:'77%'},
-	font: {fontSize:width / 32, fontFamily: 'Arial Rounded MT Bold'}	,
-	text: 'TO CLAIM, PLEASE PRESENT\nTHIS TO YOUR SERVER\nAT TIME OF PURCHASE',
-	textAlign: 'center',
-	color:'black'
-});
-vBody.add(lReward);
-
-
-self.add(vBody);
+ 
+					alertClaim.show();
+};
 
 
 return self;

@@ -14,6 +14,7 @@
 {
     NSMutableDictionary * _property = [[NSMutableDictionary alloc] init];
 
+    [_property setObject:[TiUtils stringValue:@"system"] forKey:@"ti.ui.defaultunit"];
     [_property setObject:[TiUtils stringValue:@"false"] forKey:@"ti.android.fastdev"];
     [_property setObject:[TiUtils stringValue:@"361914095676"] forKey:@"com.pushjaw.googlecloudmessaging.sender_id"];
     [_property setObject:[NSNumber numberWithInt:[TiUtils intValue:@"2130837504"]] forKey:@"com.pushjaw.googlecloudmessaging.icon"];

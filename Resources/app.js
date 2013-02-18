@@ -91,40 +91,9 @@ if (Ti.version < 1.8 ) {
 	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 	var theTabGroup = new ApplicationTabGroup();
 	if (Ti.App.Device._osname === 'iphone' || Ti.App.Device._osname === 'ipad') {
-		theTabGroup.open(0, {transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
+		theTabGroup.open({transition: Titanium.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
 	}else{
-		theTabGroup.open(0);
-	}
-	
-	theTabGroup.addEventListener('focus', function(e) {
-		
-		if(Ti.App.Device._osname == 'android'){
-			
-			// alert('masuk sono');
-			
-			var GetLatestVersion = require('ui/common/GetLatestVersion');
-	  		var getLatest = new GetLatestVersion();
-			
-			var geolocation = require('ui/common/geolocation');
-	  		var geo = new geolocation();	
-		
-		}else{
-			
-			// alert('masuk sini');
-			
-			var GetLatestVersion = require('ui/common/GetLatestVersion');
-	  		var getLatest = new GetLatestVersion();
-			
-			// alert(GetLatestVersion);
-			
-			var geolocation = require('ui/common/geolocation');
-	  		var geo = new geolocation();
-	  		
-	  		
-			
-		};
-		
-	});
-	
+		theTabGroup.open();
+	}	
 	
 })();
