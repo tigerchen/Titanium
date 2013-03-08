@@ -258,8 +258,12 @@ lForgot.addEventListener('click', function(e){
 	
 	var GetPasswordWindow = require('ui/common/GetPassword'),
 		GetPasswordWin = new GetPasswordWindow('Retrieve Password');
-		
-	self.tabGroup.activeTab.open(GetPasswordWin,{animated:true});
+	
+	if(osname == 'android'){
+		GetPasswordWin.open({animated:true});	
+	}else{
+		self.tabGroup.activeTab.open(GetPasswordWin,{animated:true});	
+	};
 	
 });
 

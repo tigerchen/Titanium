@@ -42,7 +42,7 @@ function LocationsDetailWindow(title, id, name, address, phone, offer_id) {
 		if(status == 'false'){
 						
 			var SignupWindow = require('ui/common/Signup'),
-				SignupWin = new SignupWindow(L('sign_up_title'));
+				SignupWin = new SignupWindow(L('sign_up_title'),'cancel');
 			
 			self.tabGroup.activeTab.open(SignupWin,{animated:true});
 		

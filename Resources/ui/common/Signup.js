@@ -1,7 +1,7 @@
-function SignupWindow(title) {
+function SignupWindow(title, button) {
 	
 	var wSelf = require('ui/common/Window'),
-	self = new wSelf(title, 'cancel');
+	self = new wSelf(title, button);
 			
 	var height = Ti.App.Device._height;
 	var width = Ti.App.Device._width;
@@ -249,13 +249,13 @@ bSignup.addEventListener('click',function(e){
 		            Titanium.Facebook.requestWithGraphPath('me', {}, 'GET', function(e) {
 		            // Titanium.Facebook.requestWithGraphPath('me', 'GET', function(e) {
 		                if (e.success) {
-		                   	var data = JSON.parse(e.result);
+		                   	var dataParsing = JSON.parse(e.result);
 		                    // Ti.API.info("Name:"+data.name);
 		                    // Ti.API.info("email:"+data.email);
 		                    // Ti.API.info("facebook Id:"+data.id);   						
 							                   
 		                    var data = [
-											{email:data.email},
+											{email:dataParsing.email},
 											{signUpWin:self},
 											{loginWin:null}
 										];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1956C4CD6ABD4AF1BC42F44F /* libti.imagefactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD82594D7D6F42ABB051DE01 /* libti.imagefactory.a */; };
 		1D19459613FF3BC400E2B4D0 /* TIDOMDOMImplementationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D19459513FF3BC400E2B4D0 /* TIDOMDOMImplementationProxy.m */; };
 		1D19459713FF3BC400E2B4D0 /* TIDOMDOMImplementationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D19459513FF3BC400E2B4D0 /* TIDOMDOMImplementationProxy.m */; };
 		1D19459813FF3BC400E2B4D0 /* TIDOMDOMImplementationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D19459513FF3BC400E2B4D0 /* TIDOMDOMImplementationProxy.m */; };
@@ -501,6 +502,8 @@
 		2BDEA4F514490546004EC750 /* TiUIiOSTabbedBarProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDEA4F21448FFB7004EC750 /* TiUIiOSTabbedBarProxy.m */; };
 		2BDEA4F614490547004EC750 /* TiUIiOSTabbedBarProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDEA4F21448FFB7004EC750 /* TiUIiOSTabbedBarProxy.m */; };
 		4D3033A3136239B30034640F /* TiFilesystemFileStreamProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3033A2136239B30034640F /* TiFilesystemFileStreamProxy.m */; };
+		582DB15EEC7B487BA179E882 /* libti.imagefactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12ACB85942F441D0954E289B /* libti.imagefactory.a */; };
+		6A79B30E21BF46828D2232EB /* libti.imagefactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD82594D7D6F42ABB051DE01 /* libti.imagefactory.a */; };
 		844E1F7E14883A3700F5424C /* TiDOMValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E1F7D14883A3700F5424C /* TiDOMValidator.m */; };
 		844E1F7F14883A3700F5424C /* TiDOMValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E1F7D14883A3700F5424C /* TiDOMValidator.m */; };
 		844E1F8014883A3700F5424C /* TiDOMValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 844E1F7D14883A3700F5424C /* TiDOMValidator.m */; };
@@ -548,6 +551,9 @@
 		B4E9A913128E24FB006A111B /* UIImageExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9BE36E127F8F6C000FE9E1 /* UIImageExtras.m */; };
 		B4F97B6F111A41B600E2F72C /* TiUIScrollViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F97B6E111A41B600E2F72C /* TiUIScrollViewProxy.m */; };
 		B4F97B73111A41C800E2F72C /* TiUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4F97B72111A41C800E2F72C /* TiUIScrollView.m */; };
+		BA8B0532E5264B5495958108 /* libti.imagefactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12ACB85942F441D0954E289B /* libti.imagefactory.a */; };
+		C13269A04BD744C19FEF2483 /* libti.imagefactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12ACB85942F441D0954E289B /* libti.imagefactory.a */; };
+		C7E42957431D44E486A4CA5B /* libti.imagefactory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD82594D7D6F42ABB051DE01 /* libti.imagefactory.a */; };
 		D4AB36F5123DE20200DED4A0 /* TiUIClipboardProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AB36F4123DE20200DED4A0 /* TiUIClipboardProxy.m */; };
 		D4AB36F6123DE20200DED4A0 /* TiUIClipboardProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D4AB36F4123DE20200DED4A0 /* TiUIClipboardProxy.m */; };
 		DA2556441353D2FC005D459C /* TiNetworkSocketProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2556431353D2FC005D459C /* TiNetworkSocketProxy.m */; };
@@ -914,6 +920,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12ACB85942F441D0954E289B /* libti.imagefactory.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libti.imagefactory.a; path = "/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1/libti.imagefactory.a"; sourceTree = "<absolute>"; };
 		1D19459413FF3BC400E2B4D0 /* TIDOMDOMImplementationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIDOMDOMImplementationProxy.h; sourceTree = "<group>"; };
 		1D19459513FF3BC400E2B4D0 /* TIDOMDOMImplementationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIDOMDOMImplementationProxy.m; sourceTree = "<group>"; };
 		1D19459913FF3BE500E2B4D0 /* TIDOMDocumentTypeProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIDOMDocumentTypeProxy.h; sourceTree = "<group>"; };
@@ -1529,6 +1536,7 @@
 		EF8339D113E3643C001F2A97 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
 		EF8339D213E3643C001F2A97 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
 		EF8339D713E364A0001F2A97 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		FD82594D7D6F42ABB051DE01 /* libti.imagefactory.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libti.imagefactory.a; path = "/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1/libti.imagefactory.a"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1558,6 +1566,8 @@
 				24EB0A58111E1BAE001DC2D1 /* libxml2.dylib in Frameworks */,
 				24597035118FF66300519F79 /* StoreKit.framework in Frameworks */,
 				242E8E3111BA39FD0046A0D0 /* libTiCore.a in Frameworks */,
+				6A79B30E21BF46828D2232EB /* libti.imagefactory.a in Frameworks */,
+				C13269A04BD744C19FEF2483 /* libti.imagefactory.a in Frameworks */,
 				242EA11611BD956F0046A0D0 /* ExternalAccessory.framework in Frameworks */,
 				24D5C75911E6364F00F097E2 /* libtiverify.a in Frameworks */,
 				DAA4B2AE134E3DBD00AB6011 /* libti_ios_debugger.a in Frameworks */,
@@ -1589,6 +1599,8 @@
 				24D8E4AB119B9D8A00F8CAA6 /* libxml2.dylib in Frameworks */,
 				24D8E4AC119B9D8A00F8CAA6 /* StoreKit.framework in Frameworks */,
 				242E8E3211BA39FE0046A0D0 /* libTiCore.a in Frameworks */,
+				1956C4CD6ABD4AF1BC42F44F /* libti.imagefactory.a in Frameworks */,
+				BA8B0532E5264B5495958108 /* libti.imagefactory.a in Frameworks */,
 				24D5C75A11E6364F00F097E2 /* libtiverify.a in Frameworks */,
 				DAA4B2AF134E3DBD00AB6011 /* libti_ios_debugger.a in Frameworks */,
 				DADE76D613D65C6F0079FC75 /* libicucore.dylib in Frameworks */,
@@ -1620,6 +1632,8 @@
 				DABB37B412E8CB280026A6EA /* libxml2.dylib in Frameworks */,
 				DABB37B512E8CB280026A6EA /* StoreKit.framework in Frameworks */,
 				DABB37B612E8CB280026A6EA /* libTiCore.a in Frameworks */,
+				C7E42957431D44E486A4CA5B /* libti.imagefactory.a in Frameworks */,
+				582DB15EEC7B487BA179E882 /* libti.imagefactory.a in Frameworks */,
 				DABB37B712E8CB280026A6EA /* libtiverify.a in Frameworks */,
 				DAA4B2B0134E3DBD00AB6011 /* libti_ios_debugger.a in Frameworks */,
 				DADE76D713D65C7D0079FC75 /* libicucore.dylib in Frameworks */,
@@ -1712,7 +1726,6 @@
 				24CA8A0A111161DC0084E2DE /* Utils */,
 				24CA8A0B111161E10084E2DE /* API */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -2785,6 +2798,8 @@
 				DAA4B2AD134E3DBD00AB6011 /* libti_ios_debugger.a */,
 				24D5C75811E6364F00F097E2 /* libtiverify.a */,
 				242E8E3011BA39FD0046A0D0 /* libTiCore.a */,
+				FD82594D7D6F42ABB051DE01 /* libti.imagefactory.a */,
+				12ACB85942F441D0954E289B /* libti.imagefactory.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -3008,7 +3023,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AROMAESPRESSOBAR" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AROMA ESPRESSO BAR" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -3076,7 +3091,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"/Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/iphone/builder.py\" xcode\nexit $?";
-                };
+		};
 		24CA8D03111169070084E2DE /* Post-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3090,7 +3105,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo 'post-compile'";
-                };
+		};
 		24D8E3B9119B9D8A00F8CAA6 /* Pre-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3104,7 +3119,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"/Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/iphone/builder.py\" xcode\nexit $?";
-                };
+		};
 		24D8E4AD119B9D8A00F8CAA6 /* Post-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3118,7 +3133,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo 'post-compile'";
-                };
+		};
 		DABB369F12E8CB280026A6EA /* Pre-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3132,7 +3147,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"/Users/pushjaw/Library/Application Support/Titanium/mobilesdk/osx/2.1.4.GA/iphone/builder.py\" xcode\nexit $?";
-                };
+		};
 		DABB37B812E8CB280026A6EA /* Post-Compile */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3146,7 +3161,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo 'post-compile'";
-                };
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -4001,6 +4016,8 @@
 			baseConfigurationReference = 241EAEC5118E2BA90081A5BE /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Seema Revankar (4YFTB6VG68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Seema Revankar (4YFTB6VG68)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
@@ -4013,6 +4030,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				OTHER_CFLAGS = (
 					"-DDEBUG",
@@ -4033,6 +4052,8 @@
 					iAd,
 				);
 				PRODUCT_NAME = "AROMA ESPRESSO BAR";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "093D609E-F26E-4C56-A6FF-6EAE1F401DD3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -4043,6 +4064,8 @@
 			baseConfigurationReference = 241EAEC5118E2BA90081A5BE /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Seema Revankar (4YFTB6VG68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Seema Revankar (4YFTB6VG68)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AROMA ESPRESSO BAR_Prefix.pch";
@@ -4052,6 +4075,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				"OTHER_LDFLAGS[sdk=iphoneos*]" = (
 					"$(inherited)",
@@ -4063,6 +4088,8 @@
 					CoreVideo,
 				);
 				PRODUCT_NAME = "AROMA ESPRESSO BAR";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "093D609E-F26E-4C56-A6FF-6EAE1F401DD3";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4083,6 +4110,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				OTHER_CFLAGS = (
 					"-DIPAD",
@@ -4117,6 +4146,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				OTHER_CFLAGS = (
 					"-DIPAD",
@@ -4276,6 +4307,8 @@
 			baseConfigurationReference = 241EAEC5118E2BA90081A5BE /* project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Seema Revankar (4YFTB6VG68)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Seema Revankar (4YFTB6VG68)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
@@ -4288,6 +4321,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				OTHER_CFLAGS = (
 					"-DDEBUG",
@@ -4308,6 +4343,8 @@
 					iAd,
 				);
 				PRODUCT_NAME = "AROMA ESPRESSO BAR";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "093D609E-F26E-4C56-A6FF-6EAE1F401DD3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -4328,6 +4365,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				OTHER_CFLAGS = (
 					"-DIPAD",
@@ -4364,6 +4403,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				OTHER_CFLAGS = (
 					"-DIPAD",
@@ -4406,6 +4447,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				OTHER_CFLAGS = (
 					"-DIPAD",
@@ -4446,6 +4489,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
+					"\"/Users/pushjaw/Library/Application Support/Titanium/modules/iphone/ti.imagefactory/1.1\"",
 				);
 				OTHER_CFLAGS = (
 					"-DIPAD",
@@ -4491,7 +4536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AROMAESPRESSOBAR" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AROMA ESPRESSO BAR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

@@ -23,7 +23,7 @@ function InfoWindow(title) {
 		faqWin = new FaqWindow(L('faq_title')),
 		myProfileWin = new MyProfileWindow(L('my_profile_title')),
 		promoCodeWin = new PromoCodeWindow(L('promo_code_title')),
-		SignupWin = new SignupWindow(L('sign_up_title')),
+		SignupWin = new SignupWindow(L('sign_up_title'),'cancel'),
 		loginWin = new LoginWindow(L('login_title'));
 		
 		
@@ -180,6 +180,16 @@ function InfoWindow(title) {
 	
 	// add table view to the window
 		self.add(tableview);
+	
+	var lBuild = Titanium.UI.createLabel({
+		right: 0,
+		bottom: 0,
+		font: {fontSize:_width / 34, fontFamily: 'Helvetica'}	,
+		text: 'Build 4',
+		width:'auto',
+		height:'auto'
+	});
+	self.add(lBuild);
 	
 	return self;
 };

@@ -27,7 +27,7 @@ function ApplicationTabGroup() {
 		myRewardsWin = new MyRewardsWindow(L('my_rewards_title')),
 		wallWin = new WallWindow(L('wall_title')),
 		infoWin = new InfoWindow(L('info_title')),
-		SignupWin = new SignupWindow(L('info_title'));
+		SignupWin = new SignupWindow(L('sign_up_title'),'');
 	
 		
 	var locationsTab = Ti.UI.createTab({
@@ -120,6 +120,8 @@ function ApplicationTabGroup() {
 	// });
 	
 	self.setActiveTab(Ti.App.Index._index);
+	
+	Ti.App.Tab._tab = self;
 	
 	return self;
 };

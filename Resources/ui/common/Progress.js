@@ -1,4 +1,4 @@
-function ProgressWindow(title, image, restaurant_id, name, address, phone, offer_id) {
+function ProgressWindow(title, imageReceipt, restaurant_id, name, address, phone, offer_id) {
 	
 	var wSelf = require('ui/common/Window');
 	var self = new wSelf(title, 'cancel');
@@ -8,6 +8,13 @@ function ProgressWindow(title, image, restaurant_id, name, address, phone, offer
 	
 	var status;	
 	var osname = Ti.App.Device._osname;
+	
+	
+	// var ImageRotate = require('com.relevant.imagerotate');
+	// Ti.API.info("module is => " + ImageRotate);
+	
+	// var ImageFactory = require('ti.imagefactory');
+	// Ti.API.info("module is => " + ImageFactory);
 		
 //Body
 var vBody = Titanium.UI.createView({
@@ -91,6 +98,37 @@ var lStreet = Titanium.UI.createLabel({
 	
 self.add(vBody);
 
+
+
+// var img = Titanium.UI.createImageView({
+	// image: imageReceipt
+	// transform: Ti.UI.create2DMatrix().rotate(90)			
+// });
+
+// self.add(img);
+
+
+// function resizeKeepAspectRatioPercentage(blob, imageWidth, imageHeight, percentage) {
+    // // only run this function if suitable values have been entered
+    // if (imageWidth <= 0 || imageHeight <= 0 || percentage <= 0)
+        // return blob;
+// 
+    // var w = imageWidth * (percentage / 100);
+    // var h = imageHeight * (percentage / 100);
+// 
+    // Ti.API.info('w: ' + w);
+    // Ti.API.info('h: ' + h);
+// 
+    // return ImageFactory.imageAsResized(blob, { width:w, height:h });
+// }
+
+
+// var imgR = img.toBlob();
+// var imageR = ImageRotate.imageAsResized(imgR ,768, 1024, 90);
+
+
+// var imageR = resizeKeepAspectRatioPercentage(imgR, 768, 1024, 100);
+
 if(osname == 'android'){
 	var progressBar = Titanium.UI.createProgressBar({
 		width:'53%',
@@ -120,6 +158,8 @@ if(osname == 'android'){
 }
 	self.add(progressBar);
 	progressBar.show();
+
+
 	
 
 // self.addEventListener('focus', function(){
@@ -146,8 +186,7 @@ if(osname == 'android'){
 				urlString += "&auth_token=" + auth_token;	
 												
 				var loader = Ti.Network.createHTTPClient();
-					
-					
+												
 				loader.onload = function(evt)
 				{
 					
@@ -211,13 +250,15 @@ if(osname == 'android'){
 					Ti.API.info("Error during registration: "+e.error);  
 		     		alert(e.error);
 		     	}
-				
-				loader.setTimeout(20000);
+								 
+				loader.setTimeout(200000);
 				loader.open('POST', urlString);
-				loader.send({image:image});
+				// loader.setRequestHeader("enctype", "multipart/form-data"); 
+				// loader.setRequestHeader("Content-Type", "image/png");
+				// loader.send({image:imageR});
+				loader.send({image:imageReceipt});
 		
-// });
-
+// });	
 
 return self;
 };
