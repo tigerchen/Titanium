@@ -105,7 +105,7 @@ function ApplicationTabGroup() {
 		if(e.index == 1){
 		 	self.activeTab.window.fireEvent('focus', {});
 		};
-		
+// 		
 	}); 
 // 	
 	// self.addEventListener('blur', function(e) {

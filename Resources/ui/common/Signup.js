@@ -219,7 +219,9 @@ bSignup.addEventListener('click',function(e){
 	
 	// Ti.Facebook.appid = '[209214782545635]';
 	
-	Titanium.Facebook.forceDialogAuth = 'false';
+	if(osname != 'android'){
+		Titanium.Facebook.forceDialogAuth = 'false';
+	}
 	
 	var bCon = Titanium.UI.createButton({
 		backgroundImage:'/images/fb_connect.png',

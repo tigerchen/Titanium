@@ -185,7 +185,7 @@ function InfoWindow(title) {
 		right: 0,
 		bottom: 0,
 		font: {fontSize:_width / 34, fontFamily: 'Helvetica'}	,
-		text: 'Build 4',
+		text: 'Build 6',
 		width:'auto',
 		height:'auto'
 	});

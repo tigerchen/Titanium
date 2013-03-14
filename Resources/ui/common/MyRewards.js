@@ -1,7 +1,16 @@
 function MyRewardsWindow(title) {
 			
-	var wSelf = require('ui/common/Window');
-	var self = new wSelf(title, '');
+	// var wSelf = require('ui/common/Window');
+	// var self = new wSelf(title, '');
+	
+		//window
+	 var self = Titanium.UI.createWindow({
+		 title:title,
+		 backgroundColor:'black',
+		 navBarHidden:true,
+		 exitOnClose:false
+		 // modal:true
+	});
 	
 	 // var self = Titanium.UI.createWindow({
 		 // title:title,
@@ -63,7 +72,7 @@ function MyRewardsWindow(title) {
 	//Body
 	var vBody = Titanium.UI.createView({
 	    top: '10%',
-		left: '0%',
+		left: 0,
 		height: '25%',
 		width: '100%',
 	 	backgroundColor: 'white'
@@ -138,23 +147,43 @@ function MyRewardsWindow(title) {
 									color:'white',
 									id:id[i],
 									name:name[i],
-									POSCode:POSCode[i]						
+									POSCode:POSCode[i],	
+									points:points[i]					
 								});
 								
 								
 								var h = (row.height * 90) / 100;
-										
-								var vOffer = Titanium.UI.createView({
-									// center: {x:'50%', y:y + '%'},
-									// center: {x:'50%', y:y},
-									left: 0,
-									top: 0,
-									backgroundImage: '/images/reward_unavailable.png',
-									height: h,
-									width: row.width,
-									id:id[i]									
-								});
-																		
+								
+								
+								// alert("Point = " + jsonObject.balance.points + " = " + points[i]);
+								
+								if(jsonObject.balance.points <= points[i]){
+									
+									// alert("Masuk satu");
+									
+									var vOffer = Titanium.UI.createView({
+										// center: {x:'50%', y:y + '%'},
+										// center: {x:'50%', y:y},
+										left: 0,
+										top: 0,
+										backgroundImage: '/images/reward_unavailable.png',
+										height: h,
+										width: row.width,
+										id:id[i]									
+									});
+								}else{
+									// alert("Masuk dua");
+									var vOffer = Titanium.UI.createView({
+										// center: {x:'50%', y:y + '%'},
+										// center: {x:'50%', y:y},
+										left: 0,
+										top: 0,
+										backgroundImage: '/images/reward_available.png',
+										height: h,
+										width: row.width,
+										id:id[i]									
+									});	
+								}																		
 													
 								var lOffer = Titanium.UI.createLabel({
 									left: 15,
@@ -214,6 +243,10 @@ function MyRewardsWindow(title) {
 						tblReward.addEventListener('click', function(e)
 							{							
 								// alert('id = ' + e.rowData.id);
+								
+								// alert("Point = " + jsonObject.balance.points + " - " + e.rowData.points);
+									
+								if(jsonObject.balance.points >= e.rowData.points){
 																								
 									var geolocation = require('ui/common/geolocation');
 									var geo = new geolocation();
@@ -269,7 +302,10 @@ function MyRewardsWindow(title) {
 														loader.open('GET', urlString);
 														loader.setRequestHeader('Content-Type', 'form-data');
 														loader.send();
-																			
+									
+								}else{
+									
+								};										
 							});
 			
 					

@@ -9,48 +9,26 @@ Logfile initialized
 [TRACE] adb devices returned 1 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 15 seconds)
-[DEBUG] waited 15.100134 seconds on emulator to get ready
+[DEBUG] waited 15.124914 seconds on emulator to get ready
 [INFO] Waiting for the Android Emulator to become available
 [DEBUG] com.pushjaw.aroma installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/ui/common/Info.js => /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/ui/common/Info.js
-[TRACE] Generating Java Classes
+[INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
 [DEBUG] found special platform files dir = /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/platform/android
 [INFO] Copying platform-specific files ...
-[DEBUG] copying app icon: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/appicon.png
 [DEBUG] found drawable-long-land-hdpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-long-land-hdpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-long-land-hdpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-long-land-hdpi/background.png
 [DEBUG] found drawable-long-land-ldpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-long-land-ldpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-long-land-ldpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-long-land-ldpi/background.png
 [DEBUG] found drawable-long-port-hdpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-long-port-hdpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-long-port-hdpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-long-port-hdpi/background.png
 [DEBUG] found drawable-long-port-ldpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-long-port-ldpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-long-port-ldpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-long-port-ldpi/background.png
 [DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-land-hdpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-land-hdpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-notlong-land-hdpi/background.png
 [DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-land-ldpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-land-ldpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-notlong-land-ldpi/background.png
 [DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-land-mdpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-land-mdpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-notlong-land-mdpi/background.png
 [DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-port-hdpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-port-hdpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-notlong-port-hdpi/background.png
 [DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-port-ldpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-port-ldpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-notlong-port-ldpi/background.png
 [DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-port-mdpi/default.png
-[DEBUG] copying /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/Resources/android/images/res-notlong-port-mdpi/default.png splash screen to /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/res/drawable-notlong-port-mdpi/background.png
-[DEBUG] found splash screen at /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/assets/Resources/default.png
-[TRACE] Writing out AndroidManifest.xml
-[DEBUG] adding /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/AromaEspressoBarActivity.java to javac build list
-[DEBUG] adding /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/AromaEspressoBarAppInfo.java to javac build list
-[DEBUG] adding /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/AromaEspressoBarApplication.java to javac build list
-[DEBUG] adding /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/Manifest.java to javac build list
-[DEBUG] adding /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/R.java to javac build list
-[DEBUG] Building Java Sources: "/Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/AromaEspressoBarActivity.java" "/Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/AromaEspressoBarAppInfo.java" "/Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/AromaEspressoBarApplication.java" "/Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/Manifest.java" "/Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/gen/com/pushjaw/aroma/R.java"
 [INFO] Waiting for SDCard to become available..
-[INFO] Compiling Android Resources... This could take some time
-[DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /Users/pushjaw/Documents/Titanium_Studio_Workspace/AROMA ESPRESSO BAR/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/images/nav/info.png
 [DEBUG] from resource zip => assets/Resources/images/nav/info_active.png
@@ -224,7 +202,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.024417 seconds on emulator to get ready
+[DEBUG] waited 0.024677 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... AROMA ESPRESSO BAR
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.pushjaw.aroma/.AromaEspressoBarActivity }

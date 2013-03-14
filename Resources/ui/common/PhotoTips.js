@@ -1,4 +1,4 @@
-function PhotoTipsWindow(title, id, name, address, phone, offer_id) {
+function PhotoTipsWindow(title, id, name, address, phone, offer_id, window) {
 	
 //	var wSelf = require('ui/common/Window');
 //	var self = new wSelf(title, 'back');
@@ -37,10 +37,16 @@ var bBack = Titanium.UI.createButton({
 });
 
 bBack.addEventListener('click', function(){
-	self.close();
 	
-	var TakePhotoWindow = require('ui/common/TakePhoto'),
-		TakePhotoWin = new TakePhotoWindow('Take Photo', id, name, address, phone, offer_id);
+	if(window == 'preview'){
+		self.close();
+	}else{
+		self.close();
+	
+		var TakePhotoWindow = require('ui/common/TakePhoto'),
+			TakePhotoWin = new TakePhotoWindow('Take Photo', id, name, address, phone, offer_id);	
+	}
+	
 });
 
 vHeader.add(bBack);

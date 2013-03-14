@@ -191,7 +191,9 @@ bLoggin.addEventListener('click',function(e){
 			Ti.Facebook.appid = '314418145312548';
 			Ti.Facebook.permissions = ['publish_stream', 'read_stream', 'email'];
 
-			// Titanium.Facebook.forceDialogAuth = 'false';
+			if(osname != 'android'){
+				Titanium.Facebook.forceDialogAuth = 'false';
+			}
 						
 			Titanium.Facebook.authorize();
 			
